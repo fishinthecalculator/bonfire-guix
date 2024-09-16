@@ -25,6 +25,27 @@ providing @code{Access} behaviour for custom structs.")
     (home-page "https://hexdocs.pm/accessible/")
     (license license:expat)))
 
+(define-public elixir-decimal
+  (package
+    (name "elixir-decimal")
+    (version "2.1.1")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "decimal" version))
+       (sha256
+        (base32 "1k7z418b6cj977wswpxsk5844xrxc1smaiqsmrqpf3pdjzsfbksk"))))
+    (build-system mix-build-system)
+    (native-inputs
+     (list elixir-stream-data))
+    (synopsis "Arbitrary precision decimal arithmetic")
+    (description "This package provides @code{elixir-decimal}, a library that
+represents values internally using three integers: a sign, a coefficient, and an
+exponent.  In this way, numbers of any size and with any number of decimal
+places can be represented exactly.")
+    (home-page "https://hexdocs.pm/decimal/")
+    (license license:asl2.0)))
+
 (define-public elixir-stream-data
   (package
     (name "elixir-stream-data")
