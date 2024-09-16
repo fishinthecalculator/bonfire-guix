@@ -1,3 +1,6 @@
+;;; SPDX-License-Identifier: GPL-3.0-or-later
+;;; Copyright © 2024 Giacomo Leidi <goodoldpaul@autistici.org>
+
 (define-module (bonfire packages elixir-xyz)
   #:use-module (gnu packages elixir-xyz)
   #:use-module (guix build-system mix)
