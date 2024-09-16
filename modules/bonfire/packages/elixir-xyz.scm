@@ -67,20 +67,6 @@ and decode WKB, WKT, and @code{GeoJSON} formats.")
     (home-page "https://hexdocs.pm/geo/")
     (license license:expat)))
 
-(define-public elixir-jason
-  (package
-    (inherit elixir-jason)
-    (version "1.4.4")
-    (source
-     (origin
-       (method url-fetch)
-       (uri (hexpm-uri "jason" version))
-       (sha256
-        (base32 "0fqbr5n5z3cya8a7i9i1kb38wsi314sccnymjjgmk57hj6mhrsy5"))))
-    (native-inputs
-     (list elixir-stream-data))
-    (inputs (list elixir-decimal))))
-
 (define-public elixir-stream-data
   (package
     (name "elixir-stream-data")
