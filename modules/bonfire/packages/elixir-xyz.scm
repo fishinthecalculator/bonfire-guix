@@ -5,9 +5,11 @@
   #:use-module (gnu packages elixir-xyz)
   #:use-module (guix build-system mix)
   #:use-module (guix download)
+  #:use-module (guix gexp)
   #:use-module ((guix licenses)
                 #:prefix license:)
-  #:use-module (guix packages))
+  #:use-module (guix packages)
+  #:use-module (bonfire packages erlang-xyz))
 
 (define-public elixir-accessible
   (package
@@ -47,6 +49,34 @@ represents values internally using three integers: a sign, a coefficient, and an
 exponent.  In this way, numbers of any size and with any number of decimal
 places can be represented exactly.")
     (home-page "https://hexdocs.pm/decimal/")
+    (license license:asl2.0)))
+
+(define-public elixir-ecto
+  (package
+    (name "elixir-ecto")
+    (version "3.12.3")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "ecto" version))
+       (sha256
+        (base32 "0rcisp34m8b058jrcf52nziyscmn1h6yfjfw91ggj8p7d9893zcy"))))
+    (build-system mix-build-system)
+    (arguments
+     (list
+      #:phases
+      #~(modify-phases %standard-phases
+          (add-before 'build 'set-erl-libs
+            (lambda* (#:key inputs #:allow-other-keys)
+              (let ((telemetry #$(this-package-input "erlang-telemetry")))
+                (setenv "ERL_LIBS" (string-append telemetry "/lib/erlang/lib"))))))))
+    (inputs (list elixir-decimal elixir-jason erlang-telemetry))
+    (synopsis
+     "A toolkit for data mapping and language integrated query for Elixir")
+    (description
+     "This package provides a toolkit for data mapping and language integrated query
+for Elixir.")
+    (home-page "https://hexdocs.pm/ecto/")
     (license license:asl2.0)))
 
 (define-public elixir-geo
