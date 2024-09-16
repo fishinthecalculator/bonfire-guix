@@ -46,6 +46,24 @@ places can be represented exactly.")
     (home-page "https://hexdocs.pm/decimal/")
     (license license:asl2.0)))
 
+(define-public elixir-geo
+  (package
+    (name "elixir-geo")
+    (version "3.6.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "geo" version))
+       (sha256
+        (base32 "1nk8c4099bmhfgspagx9ikd6m9x965js7mwa7jy58fqq2zvfpg8x"))))
+    (build-system mix-build-system)
+    (inputs (list elixir-jason))
+    (synopsis "Encodes and decodes WKB, WKT, and GeoJSON formats")
+    (description "This package provides @code{elixir-geo}, a library to encode
+and decode WKB, WKT, and @code{GeoJSON} formats.")
+    (home-page "https://hexdocs.pm/geo/")
+    (license license:expat)))
+
 (define-public elixir-jason
   (package
     (inherit elixir-jason)
