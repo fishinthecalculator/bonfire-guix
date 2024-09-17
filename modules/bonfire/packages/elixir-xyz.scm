@@ -30,6 +30,39 @@ providing @code{Access} behaviour for custom structs.")
     (home-page "https://hexdocs.pm/accessible/")
     (license license:expat)))
 
+(define-public elixir-db-connection
+  (package
+    (name "elixir-db-connection")
+    (version "2.7.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "db_connection" version))
+       (sha256
+        (base32 "1zykppj97pc1x0apy8ag40r1mmi3hbbvlzvqziyqa7vhn8qqzw6w"))))
+    (build-system mix-build-system)
+    (arguments
+     (list
+      ;; Tests require a db process
+      #:tests? #f
+      #:build-per-environment #f
+      #:phases
+      #~(modify-phases %standard-phases
+          (add-before 'build 'set-erl-libs
+            (lambda* (#:key inputs #:allow-other-keys)
+              (let ((telemetry #$(this-package-input "erlang-telemetry")))
+                (setenv "ERL_LIBS" (string-append telemetry "/lib/erlang/lib"))))))))
+    (inputs (list erlang-telemetry))
+    (synopsis
+     "Database connection behaviour")
+    (description
+     "This package provides @code{elixir-db-connection}, a library implementing
+database connection behaviour and database connection pool.  It is designed for
+handling transaction, prepare/execute, cursors and client process
+describe/encode/decode.")
+    (home-page "https://hexdocs.pm/db_connection/")
+    (license license:asl2.0)))
+
 (define-public elixir-decimal
   (package
     (name "elixir-decimal")
