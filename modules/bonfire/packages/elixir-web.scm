@@ -10,6 +10,7 @@
                 #:prefix license:)
   #:use-module (guix packages)
   #:use-module (bonfire guix build-system mix)
+  #:use-module (bonfire packages erlang-xyz)
   #:use-module (bonfire packages elixir-xyz))
 
 (define-public elixir-hpack
@@ -33,6 +34,29 @@ compression format for efficiently representing HTTP header fields, to be used
 in HTTP/2.")
     (home-page "https://hexdocs.pm/hpack/")
     (license license:expat)))
+
+(define-public elixir-hpax
+  (package
+    (name "elixir-hpax")
+    (version "1.0.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "hpax" version))
+       (sha256
+        (base32 "00fnzb8cc2xvjmai1cvh4mac4gsrjq93dzf7znjjq7ki3mri84vz"))))
+    (build-system mix-build-system)
+    (native-inputs
+     (list erlang-coveralls
+           elixir-excoveralls
+           elixir-castore
+           elixir-hpack
+           elixir-stream-data))
+    (synopsis "Implementation of the HPACK protocol (RFC 7541) for Elixir")
+    (description "This package provides @code{elixir-hpax}, an implementation of
+the HPACK protocol (RFC 7541) for Elixir.")
+    (home-page "https://hexdocs.pm/hpax/")
+    (license license:asl2.0)))
 
 (define-public elixir-phoenix-html
   (package

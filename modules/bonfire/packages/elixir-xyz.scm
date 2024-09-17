@@ -89,6 +89,23 @@ and decode WKB, WKT, and @code{GeoJSON} formats.")
     (home-page "https://hexdocs.pm/geo/")
     (license license:expat)))
 
+(define-public elixir-mime
+  (package
+    (name "elixir-mime")
+    (version "2.0.6")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "mime" version))
+       (sha256
+        (base32 "0ghmkcyx3lcgzrjasf51k42d628fiqzn9hxai5rp8vdjlrim7569"))))
+    (build-system mix-build-system)
+    (synopsis "MIME type module")
+    (description "This package provides @code{elixir-mime}, a MIME type module
+for Elixir.")
+    (home-page "https://hexdocs.pm/mime/")
+    (license license:asl2.0)))
+
 (define-public elixir-stream-data
   (package
     (name "elixir-stream-data")
