@@ -4,6 +4,7 @@
 (define-module (bonfire packages elixir-xyz)
   #:use-module (gnu packages elixir-xyz)
   #:use-module (guix download)
+  #:use-module (guix git-download)
   #:use-module (guix gexp)
   #:use-module ((guix licenses)
                 #:prefix license:)
@@ -96,6 +97,41 @@ places can be represented exactly.")
      "This package provides a toolkit for data mapping and language integrated query
 for Elixir.")
     (home-page "https://hexdocs.pm/ecto/")
+    (license license:asl2.0)))
+
+(define-public elixir-ecto-sql
+  (package
+    (name "elixir-ecto-sql")
+    (version "3.12.0")
+(source
+       (origin
+         (method git-fetch)
+         (uri (git-reference
+               (url "https://github.com/elixir-ecto/ecto_sql.git")
+               (commit (string-append "v" version))))
+         (file-name (git-file-name name version))
+         (sha256
+          (base32 "15k7rmf8i6qx25hcqk88j8d6ydd0mf5jalrdyrnlia6ybw99dk7n"))))
+    (build-system mix-build-system)
+    (inputs (list elixir-db-connection
+                  elixir-ecto
+                  elixir-myxql
+                  elixir-postgrex
+                  elixir-tds))
+    (synopsis "SQL-based adapters for Ecto and database migrations")
+    (description "@code{Ecto SQL} provides building blocks for writing SQL
+adapters for Ecto.  It features:
+
+@itemize
+@item The @code{Ecto.Adapters.SQL} module as an entry point for all SQL-based
+adapters
+@item Default implementations for Postgres (@code{Ecto.Adapters.Postgres}),
+MySQL (@code{Ecto.Adapters.MyXQL}), and MSSQL (@code{Ecto.Adapters.Tds})
+@item A test sandbox (@code{Ecto.Adapters.SQL.Sandbox}) that concurrently runs
+database tests inside transactions
+@item Support for database migrations via Mix tasks
+@ent itemize")
+    (home-page "https://hexdocs.pm/ecto_sql/")
     (license license:asl2.0)))
 
 (define-public elixir-ex-ulid
