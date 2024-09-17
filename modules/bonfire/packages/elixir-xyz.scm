@@ -103,15 +103,15 @@ for Elixir.")
   (package
     (name "elixir-ecto-sql")
     (version "3.12.0")
-(source
-       (origin
-         (method git-fetch)
-         (uri (git-reference
-               (url "https://github.com/elixir-ecto/ecto_sql.git")
-               (commit (string-append "v" version))))
-         (file-name (git-file-name name version))
-         (sha256
-          (base32 "15k7rmf8i6qx25hcqk88j8d6ydd0mf5jalrdyrnlia6ybw99dk7n"))))
+    (source
+     (origin
+       (method git-fetch)
+       (uri (git-reference
+             (url "https://github.com/elixir-ecto/ecto_sql.git")
+             (commit (string-append "v" version))))
+       (file-name (git-file-name name version))
+       (sha256
+        (base32 "15k7rmf8i6qx25hcqk88j8d6ydd0mf5jalrdyrnlia6ybw99dk7n"))))
     (build-system mix-build-system)
     (propagated-inputs
      (list elixir-db-connection
