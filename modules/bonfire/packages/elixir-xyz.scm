@@ -3,12 +3,12 @@
 
 (define-module (bonfire packages elixir-xyz)
   #:use-module (gnu packages elixir-xyz)
-  #:use-module (guix build-system mix)
   #:use-module (guix download)
   #:use-module (guix gexp)
   #:use-module ((guix licenses)
                 #:prefix license:)
   #:use-module (guix packages)
+  #:use-module (bonfire guix build-system mix)
   #:use-module (bonfire packages erlang-xyz))
 
 (define-public elixir-accessible
@@ -45,14 +45,8 @@ providing @code{Access} behaviour for custom structs.")
      (list
       ;; Tests require a db process
       #:tests? #f
-      #:build-per-environment #f
-      #:phases
-      #~(modify-phases %standard-phases
-          (add-before 'build 'set-erl-libs
-            (lambda* (#:key inputs #:allow-other-keys)
-              (let ((telemetry #$(this-package-input "erlang-telemetry")))
-                (setenv "ERL_LIBS" (string-append telemetry "/lib/erlang/lib"))))))))
-    (inputs (list erlang-telemetry))
+      #:build-per-environment #f))
+    (propagated-inputs (list erlang-telemetry))
     (synopsis
      "Database connection behaviour")
     (description
@@ -95,15 +89,7 @@ places can be represented exactly.")
        (sha256
         (base32 "0rcisp34m8b058jrcf52nziyscmn1h6yfjfw91ggj8p7d9893zcy"))))
     (build-system mix-build-system)
-    (arguments
-     (list
-      #:phases
-      #~(modify-phases %standard-phases
-          (add-before 'build 'set-erl-libs
-            (lambda* (#:key inputs #:allow-other-keys)
-              (let ((telemetry #$(this-package-input "erlang-telemetry")))
-                (setenv "ERL_LIBS" (string-append telemetry "/lib/erlang/lib"))))))))
-    (inputs (list elixir-decimal elixir-jason erlang-telemetry))
+    (propagated-inputs (list elixir-decimal elixir-jason erlang-telemetry))
     (synopsis
      "Toolkit for data mapping and language integrated query for Elixir")
     (description
@@ -142,18 +128,9 @@ Universally Unique Lexicographically Sortable Identifier (ULID).")
        (sha256
         (base32 "1mkzxj37dqb966fhqg528wrlfx9ifgxis87np4fqc30rqabgsyj4"))))
     (build-system mix-build-system)
-    (arguments
-     (list
-      #:phases
-      #~(modify-phases %standard-phases
-          (add-before 'check 'set-erl-libs
-            (lambda _
-             (let ((telemetry #$(this-package-native-input "erlang-telemetry")))
-                (setenv "ERL_LIBS" (string-append telemetry "/lib/erlang/lib"))))))))
-    (inputs (list elixir-accessible elixir-ecto))
+    (propagated-inputs (list elixir-accessible elixir-ecto))
     (native-inputs
-     (list erlang-telemetry
-           elixir-decimal))
+     (list elixir-decimal))
     (synopsis "Extend ecto schema definitions in config")
     (description "@code{Exto} is an Elixir library providing
 configuration-driven @code{Ecto} schema extensibility.")
@@ -171,7 +148,7 @@ configuration-driven @code{Ecto} schema extensibility.")
        (sha256
         (base32 "1nk8c4099bmhfgspagx9ikd6m9x965js7mwa7jy58fqq2zvfpg8x"))))
     (build-system mix-build-system)
-    (inputs (list elixir-jason))
+    (propagated-inputs (list elixir-jason))
     (synopsis "Encodes and decodes WKB, WKT, and GeoJSON formats")
     (description "This package provides @code{elixir-geo}, a library to encode
 and decode WKB, WKT, and @code{GeoJSON} formats.")
@@ -189,26 +166,9 @@ and decode WKB, WKT, and @code{GeoJSON} formats.")
        (sha256
         (base32 "0dj9034nfyii8dmd7c1hdkvikgkfh5rd9hhahnshjfimagzwv4d4"))))
     (build-system mix-build-system)
-    (arguments
-     (list
-      #:phases
-      #~(modify-phases %standard-phases
-          (add-before 'check 'set-erl-libs
-            (lambda _
-              (use-modules (srfi srfi-1))
-              (let* ((inputs
-                      (map second
-                           '(#$@(package-native-inputs this-package)
-                             #$@(package-inputs this-package))))
-                     (search-paths
-                      (search-path-as-list '("lib/erlang/lib")
-                                           inputs))
-                     (erl-libs
-                      (string-join search-paths ":")))
-                (setenv "ERL_LIBS" erl-libs)))))))
     (native-inputs
-     (list erlang-binpp erlang-telemetry))
-    (inputs (list elixir-db-connection elixir-decimal elixir-geo elixir-jason
+     (list erlang-binpp))
+    (propagated-inputs (list elixir-db-connection elixir-decimal elixir-geo elixir-jason
                   elixir-table))
     (synopsis "MySQL 5.5+ driver for Elixir")
     (description "This library provides a @code{MySQL} 5.5+ driver for Elixir.")
@@ -226,26 +186,7 @@ and decode WKB, WKT, and @code{GeoJSON} formats.")
        (sha256
         (base32 "1y58v3jsya98462r43mv29wwgf3vv8dz9jn63q4iwf4gl62pib4b"))))
     (build-system mix-build-system)
-    (arguments
-     (list
-      #:phases
-      #~(modify-phases %standard-phases
-          (add-before 'check 'set-erl-libs
-            (lambda _
-              (use-modules (srfi srfi-1))
-              (let* ((inputs
-                      (map second
-                           '(#$@(package-native-inputs this-package)
-                             #$@(package-inputs this-package))))
-                     (search-paths
-                      (search-path-as-list '("lib/erlang/lib")
-                                           inputs))
-                     (erl-libs
-                      (string-join search-paths ":")))
-                (setenv "ERL_LIBS" erl-libs)))))))
-    (native-inputs
-     (list erlang-telemetry))
-    (inputs (list elixir-db-connection elixir-decimal elixir-jason
+    (propagated-inputs (list elixir-db-connection elixir-decimal elixir-jason
                   elixir-table))
     (synopsis "PostgreSQL driver for Elixir")
     (description "This library provides a @code{PostgreSQL} driver for Elixir.")
@@ -299,27 +240,9 @@ implements unified access to tabular data.")
        (sha256
         (base32 "1wk20rk1fjh16swlkiyl3fs91lj4w4dk77l5z77vp12mvpsm1qsj"))))
     (build-system mix-build-system)
-    (arguments
-     (list
-      #:phases
-      #~(modify-phases %standard-phases
-          (add-before 'check 'set-erl-libs
-            (lambda _
-              (use-modules (srfi srfi-1))
-              (let* ((inputs
-                      (map second
-                           '(#$@(package-native-inputs this-package)
-                             #$@(package-inputs this-package))))
-                     (search-paths
-                      (search-path-as-list '("lib/erlang/lib")
-                                           inputs))
-                     (erl-libs
-                      (string-join search-paths ":")))
-                (setenv "ERL_LIBS" erl-libs)))))))
-    (native-inputs
-     (list erlang-telemetry))
-    (inputs (list elixir-db-connection elixir-decimal elixir-jason
-                  elixir-table))
+    (propagated-inputs
+     (list elixir-db-connection elixir-decimal elixir-jason
+           elixir-table))
     (synopsis
      "Elixir implementation of the MS TDS protocol")
     (description
