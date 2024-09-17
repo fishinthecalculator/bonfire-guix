@@ -12,6 +12,24 @@
   #:use-module (bonfire guix build-system mix)
   #:use-module (bonfire packages elixir-xyz))
 
+(define-public elixir-phoenix-html
+  (package
+    (name "elixir-phoenix-html")
+    (version "4.1.1")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "phoenix_html" version))
+       (sha256
+        (base32 "0vvcakf4l4flzq8053srq0p96vdqsbbpyj911d8jz6mwf9ddzwpj"))))
+    (build-system mix-build-system)
+    (synopsis "Phoenix view functions for working with HTML templates")
+    (description "This package provides @code{elixir-phoenix-html}, a library
+implementing view functions for working with HTML templates in the Phoenix
+framework.")
+    (home-page "https://hexdocs.pm/phoenix_html/")
+    (license license:expat)))
+
 (define-public elixir-phoenix-pubsub
   (package
     (name "elixir-phoenix-pubsub")
