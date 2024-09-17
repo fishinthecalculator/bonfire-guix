@@ -115,3 +115,20 @@ If you want to render other formats, such as XML, @code{Phoenix.View} may still
 be a useful addition to your projects.")
     (home-page "https://hexdocs.pm/phoenix_view/")
     (license license:expat)))
+
+(define-public elixir-plug-crypto
+  (package
+    (name "elixir-plug-crypto")
+    (version "2.1.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "plug_crypto" version))
+       (sha256
+        (base32 "1yn44iw4688lbqwzap2wp55hxrhs8b28n0r61z7gif1hn2j1c4hk"))))
+    (build-system mix-build-system)
+    (synopsis "Crypto-related functionality for the web")
+    (description "This package provides @code{elixir-plug-crypto}, a library
+implementing crypto-related functionality for the web, used by Plug.")
+    (home-page "https://hexdocs.pm/plug_crypto/")
+    (license license:asl2.0)))
