@@ -72,7 +72,7 @@ places can be represented exactly.")
                 (setenv "ERL_LIBS" (string-append telemetry "/lib/erlang/lib"))))))))
     (inputs (list elixir-decimal elixir-jason erlang-telemetry))
     (synopsis
-     "A toolkit for data mapping and language integrated query for Elixir")
+     "Toolkit for data mapping and language integrated query for Elixir")
     (description
      "This package provides a toolkit for data mapping and language integrated query
 for Elixir.")
