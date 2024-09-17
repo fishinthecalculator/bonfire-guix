@@ -113,11 +113,12 @@ for Elixir.")
          (sha256
           (base32 "15k7rmf8i6qx25hcqk88j8d6ydd0mf5jalrdyrnlia6ybw99dk7n"))))
     (build-system mix-build-system)
-    (inputs (list elixir-db-connection
-                  elixir-ecto
-                  elixir-myxql
-                  elixir-postgrex
-                  elixir-tds))
+    (propagated-inputs
+     (list elixir-db-connection
+           elixir-ecto
+           elixir-myxql
+           elixir-postgrex
+           elixir-tds))
     (synopsis "SQL-based adapters for Ecto and database migrations")
     (description "@code{Ecto SQL} provides building blocks for writing SQL
 adapters for Ecto.  It features:
@@ -222,9 +223,7 @@ and decode WKB, WKT, and @code{GeoJSON} formats.")
        (sha256
         (base32 "14ryrgsabj08v1a0wyad21aizyy8kcr0n1l1z6ks6fvv4v2hskfm"))))
     (build-system mix-build-system)
-    (native-inputs
-     (list elixir-db-connection))
-    (inputs (list elixir-ecto elixir-ecto-sql elixir-ex-ulid))
+    (propagated-inputs (list elixir-ecto elixir-ecto-sql elixir-ex-ulid))
     (synopsis
      "Provides an ULID datatype for @code{Ecto} and related helpers")
     (description
