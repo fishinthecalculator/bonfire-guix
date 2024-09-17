@@ -44,3 +44,15 @@ Otherwise, if you already have a `.config/guix/channels.scm` you can simply prep
 ### What is a Guix channel?
 
 A [channel](https://guix.gnu.org/en/manual/devel/en/guix.html#Channels) is roughly the Guix equivalent of the AUR or container registries. It's a software repository providing Guix package and service definitions.
+
+## Contributing
+
+All contributions are welcome. If you have commit access please remember to setup the authentication hook with
+
+```bash
+guix git authenticate --cache-key=channels/bonfire-guix 2cc6f76adafb6333f0ec3e5fe4835fa0f0d9a0ff '8D10 60B9 6BB8 292E 829B  7249 AED4 1CC1 93B7 01E2'
+```
+
+## License
+
+Unless otherwise stated all the files in this repository are to be considered under the GPL 3.0 terms. You are more than welcome to open issues or send patches.
