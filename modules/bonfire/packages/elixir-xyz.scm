@@ -31,33 +31,6 @@ providing @code{Access} behaviour for custom structs.")
     (home-page "https://hexdocs.pm/accessible/")
     (license license:expat)))
 
-(define-public elixir-db-connection
-  (package
-    (name "elixir-db-connection")
-    (version "2.7.0")
-    (source
-     (origin
-       (method url-fetch)
-       (uri (hexpm-uri "db_connection" version))
-       (sha256
-        (base32 "1zykppj97pc1x0apy8ag40r1mmi3hbbvlzvqziyqa7vhn8qqzw6w"))))
-    (build-system mix-build-system)
-    (arguments
-     (list
-      ;; Tests require a db process
-      #:tests? #f
-      #:build-per-environment #f))
-    (propagated-inputs (list erlang-telemetry))
-    (synopsis
-     "Database connection behaviour")
-    (description
-     "This package provides @code{elixir-db-connection}, a library implementing
-database connection behaviour and database connection pool.  It is designed for
-handling transaction, prepare/execute, cursors and client process
-describe/encode/decode.")
-    (home-page "https://hexdocs.pm/db_connection/")
-    (license license:asl2.0)))
-
 (define-public elixir-decimal
   (package
     (name "elixir-decimal")
@@ -79,62 +52,6 @@ places can be represented exactly.")
     (home-page "https://hexdocs.pm/decimal/")
     (license license:asl2.0)))
 
-(define-public elixir-ecto
-  (package
-    (name "elixir-ecto")
-    (version "3.12.3")
-    (source
-     (origin
-       (method url-fetch)
-       (uri (hexpm-uri "ecto" version))
-       (sha256
-        (base32 "0rcisp34m8b058jrcf52nziyscmn1h6yfjfw91ggj8p7d9893zcy"))))
-    (build-system mix-build-system)
-    (propagated-inputs (list elixir-decimal elixir-jason erlang-telemetry))
-    (synopsis
-     "Toolkit for data mapping and language integrated query for Elixir")
-    (description
-     "This package provides a toolkit for data mapping and language integrated query
-for Elixir.")
-    (home-page "https://hexdocs.pm/ecto/")
-    (license license:asl2.0)))
-
-(define-public elixir-ecto-sql
-  (package
-    (name "elixir-ecto-sql")
-    (version "3.12.0")
-    (source
-     (origin
-       (method git-fetch)
-       (uri (git-reference
-             (url "https://github.com/elixir-ecto/ecto_sql.git")
-             (commit (string-append "v" version))))
-       (file-name (git-file-name name version))
-       (sha256
-        (base32 "15k7rmf8i6qx25hcqk88j8d6ydd0mf5jalrdyrnlia6ybw99dk7n"))))
-    (build-system mix-build-system)
-    (propagated-inputs
-     (list elixir-db-connection
-           elixir-ecto
-           elixir-myxql
-           elixir-postgrex
-           elixir-tds))
-    (synopsis "SQL-based adapters for Ecto and database migrations")
-    (description "@code{Ecto SQL} provides building blocks for writing SQL
-adapters for Ecto.  It features:
-
-@itemize
-@item The @code{Ecto.Adapters.SQL} module as an entry point for all SQL-based
-adapters
-@item Default implementations for Postgres (@code{Ecto.Adapters.Postgres}),
-MySQL (@code{Ecto.Adapters.MyXQL}), and MSSQL (@code{Ecto.Adapters.Tds})
-@item A test sandbox (@code{Ecto.Adapters.SQL.Sandbox}) that concurrently runs
-database tests inside transactions
-@item Support for database migrations via Mix tasks
-@ent itemize")
-    (home-page "https://hexdocs.pm/ecto_sql/")
-    (license license:asl2.0)))
-
 (define-public elixir-ex-ulid
   (package
     (name "elixir-ex-ulid")
@@ -152,26 +69,6 @@ database tests inside transactions
      "This package provides @code{elixir-ex-ulid} an implementation of
 Universally Unique Lexicographically Sortable Identifier (ULID).")
     (home-page "https://hexdocs.pm/ex_ulid/")
-    (license license:asl2.0)))
-
-(define-public elixir-exto
-  (package
-    (name "elixir-exto")
-    (version "0.4.0")
-    (source
-     (origin
-       (method url-fetch)
-       (uri (hexpm-uri "exto" version))
-       (sha256
-        (base32 "1mkzxj37dqb966fhqg528wrlfx9ifgxis87np4fqc30rqabgsyj4"))))
-    (build-system mix-build-system)
-    (propagated-inputs (list elixir-accessible elixir-ecto))
-    (native-inputs
-     (list elixir-decimal))
-    (synopsis "Extend ecto schema definitions in config")
-    (description "@code{Exto} is an Elixir library providing
-configuration-driven @code{Ecto} schema extensibility.")
-    (home-page "https://hexdocs.pm/exto/")
     (license license:asl2.0)))
 
 (define-public elixir-geo
@@ -192,91 +89,6 @@ and decode WKB, WKT, and @code{GeoJSON} formats.")
     (home-page "https://hexdocs.pm/geo/")
     (license license:expat)))
 
-(define-public elixir-myxql
-  (package
-    (name "elixir-myxql")
-    (version "0.7.1")
-    (source
-     (origin
-       (method url-fetch)
-       (uri (hexpm-uri "myxql" version))
-       (sha256
-        (base32 "0dj9034nfyii8dmd7c1hdkvikgkfh5rd9hhahnshjfimagzwv4d4"))))
-    (build-system mix-build-system)
-    (native-inputs
-     (list erlang-binpp))
-    (propagated-inputs (list elixir-db-connection elixir-decimal elixir-geo elixir-jason
-                  elixir-table))
-    (synopsis "MySQL 5.5+ driver for Elixir")
-    (description "This library provides a @code{MySQL} 5.5+ driver for Elixir.")
-    (home-page "https://hexdocs.pm/myxql/")
-    (license license:asl2.0)))
-
-(define-public elixir-needle-ulid
-  (package
-    (name "elixir-needle-ulid")
-    (version "0.3.0")
-    (source
-     (origin
-       (method url-fetch)
-       (uri (hexpm-uri "needle_ulid" version))
-       (sha256
-        (base32 "14ryrgsabj08v1a0wyad21aizyy8kcr0n1l1z6ks6fvv4v2hskfm"))))
-    (build-system mix-build-system)
-    (propagated-inputs (list elixir-ecto elixir-ecto-sql elixir-ex-ulid))
-    (synopsis
-     "Provides an ULID datatype for @code{Ecto} and related helpers")
-    (description
-     "This package provides @code{elixir-needle-ulid}, a library implementing an
-ULID datatype for @code{Ecto} (using @code{ex_ulid}) and related helpers.")
-    (home-page "https://hexdocs.pm/needle_ulid/")
-    (license license:expat)))
-
-(define-public elixir-needle
-  (package
-    (name "elixir-needle")
-    (version "0.8.0")
-    (source
-     (origin
-       (method url-fetch)
-       (uri (hexpm-uri "needle" version))
-       (sha256
-        (base32 "0gf1bniwf650xrczvimmw1drg6cjqz21539nlhqw4la4m91jl7h4"))))
-    (build-system mix-build-system)
-    (propagated-inputs (list elixir-ecto-sql elixir-exto elixir-needle-ulid
-                             erlang-telemetry))
-    (synopsis
-     "Universal foreign keys, virtual schemas, and shared data mixins")
-    (description
-     "When using a relational DB (such an @code{Ecto} schema with a Postgres
-table), usually a foreign key field has to be pre-defined with a reference
-pointing to a specific field in a specific table.
-
-Besides regular schemas with universal foreign keys (@code{Pointable}),
-@code{Needle} provides @code{Virtual} for schemas that don’t have any fields on
-their own, and @code{Mixin} for storing common fields that can be re-used by
-multiple @code{Pointable}s or @code{Virtual}s.")
-    (home-page "https://hexdocs.pm/needle/")
-    (license license:asl2.0)))
-
-(define-public elixir-postgrex
-  (package
-    (name "elixir-postgrex")
-    (version "0.19.1")
-    (source
-     (origin
-       (method url-fetch)
-       (uri (hexpm-uri "postgrex" version))
-       (sha256
-        (base32 "1y58v3jsya98462r43mv29wwgf3vv8dz9jn63q4iwf4gl62pib4b"))))
-    (build-system mix-build-system)
-    (propagated-inputs (list elixir-db-connection elixir-decimal elixir-jason
-                  elixir-table))
-    (synopsis "PostgreSQL driver for Elixir")
-    (description "This library provides a @code{PostgreSQL} driver for Elixir.")
-    (home-page "https://hexdocs.pm/postgrex/")
-    (license license:asl2.0)))
-
 (define-public elixir-stream-data
   (package
     (name "elixir-stream-data")
@@ -294,43 +106,4 @@ multiple @code{Pointable}s or @code{Virtual}s.")
     (description "@code{StreamData} is an Elixir library for data generation and
 property-based testing.")
     (home-page "https://hexdocs.pm/stream_data/")
-    (license license:asl2.0)))
-
-(define-public elixir-table
-  (package
-    (name "elixir-table")
-    (version "0.1.2")
-    (source
-     (origin
-       (method url-fetch)
-       (uri (hexpm-uri "table" version))
-       (sha256
-        (base32 "0aah0rkq6ikl1w359n65rmhk0p0npwj0fr35grf321pqzrzbr6by"))))
-    (build-system mix-build-system)
-    (synopsis "Unified access to tabular data")
-    (description "This package provides @code{elixir-table}, a library that
-implements unified access to tabular data.")
-    (home-page "https://hexdocs.pm/table/")
-    (license license:asl2.0)))
-
-(define-public elixir-tds
-  (package
-    (name "elixir-tds")
-    (version "2.3.5")
-    (source
-     (origin
-       (method url-fetch)
-       (uri (hexpm-uri "tds" version))
-       (sha256
-        (base32 "1wk20rk1fjh16swlkiyl3fs91lj4w4dk77l5z77vp12mvpsm1qsj"))))
-    (build-system mix-build-system)
-    (propagated-inputs
-     (list elixir-db-connection elixir-decimal elixir-jason
-           elixir-table))
-    (synopsis
-     "Elixir implementation of the MS TDS protocol")
-    (description
-     "This package implements a Microsoft SQL Server client.  More generally it
-provides an Elixir implementation of the MS TDS protocol.")
-    (home-page "https://hexdocs.pm/tds/")
     (license license:asl2.0)))
