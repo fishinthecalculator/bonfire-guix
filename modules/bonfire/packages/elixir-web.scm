@@ -50,3 +50,21 @@ implementing a distributed @code{PubSub} and @code{Presence} platform for the
 Phoenix Framework.")
     (home-page "https://hexdocs.pm/phoenix_pubsub/")
     (license license:expat)))
+
+(define-public elixir-phoenix-template
+  (package
+    (name "elixir-phoenix-template")
+    (version "1.0.4")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "phoenix_template" version))
+       (sha256
+        (base32 "01j28jf0q1h5pk9ndf7s6jx9m489jyf24byabjpkyxf6wpq8231c"))))
+    (build-system mix-build-system)
+    (native-inputs (list elixir-jason))
+    (inputs (list elixir-phoenix-html))
+    (synopsis "Template rendering for Phoenix")
+    (description "Template rendering for Phoenix.")
+    (home-page "https://hexdocs.pm/phoenix_template/")
+    (license license:expat)))
