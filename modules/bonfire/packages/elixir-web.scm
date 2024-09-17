@@ -68,3 +68,28 @@ Phoenix Framework.")
     (description "Template rendering for Phoenix.")
     (home-page "https://hexdocs.pm/phoenix_template/")
     (license license:expat)))
+
+(define-public elixir-phoenix-view
+  (package
+    (name "elixir-phoenix-view")
+    (version "2.0.4")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "phoenix_view" version))
+       (sha256
+        (base32 "02v2xd1h415kbf1ncclqx6acrbslh6i2gnrmfgjizwqlrqi216af"))))
+    (build-system mix-build-system)
+    (native-inputs
+     (list elixir-jason))
+    (inputs (list elixir-phoenix-html elixir-phoenix-template))
+    (synopsis "View layer in Phoenix v1.0-v1.6 apps")
+    (description "Within LiveView and HTML apps, @code{Phoenix.View} has fallen
+out of fashion in favor of @code{Phoenix.Component}.  See the \"Replaced by
+@code{Phoenix.Component}\" section in the @code{Phoenix.View} module
+documentation for more information and migration steps.
+
+If you want to render other formats, such as XML, @code{Phoenix.View} may still
+be a useful addition to your projects.")
+    (home-page "https://hexdocs.pm/phoenix_view/")
+    (license license:expat)))
