@@ -2,7 +2,7 @@
 ;;; Copyright © 2024 Giacomo Leidi <goodoldpaul@autistici.org>
 
 (define-module (bonfire packages erlang-xyz)
-  #:use-module (gnu packages erlang-xyz)
+  #:use-module (gnu packages erlang)
   #:use-module (guix build-system rebar)
   #:use-module (guix download)
   #:use-module (guix git-download)
@@ -33,6 +33,24 @@ binary by default.  However there are options making @code{pprint} functions
 return formatted data instead of performing direct IO write.")
     (home-page "https://hexdocs.pm/binpp/")
     (license license:wtfpl2)))
+
+(define-public erlang-coveralls
+  (package
+    (name "erlang-coveralls")
+    (version "2.2.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "coveralls" version))
+       (sha256
+        (base32 "18q4c8bcrpa48mvwpwdh51ma84zfxhcmd70qh2956jy6m05dnm6d"))))
+    (build-system rebar-build-system)
+    (inputs (list erlang-jsx))
+    (synopsis "Coveralls for Erlang")
+    (description "This package provides @code{erlang-coveralls}, an Erlang
+module to convert and send cover data to Coveralls.")
+    (home-page "https://hex.pm/packages/coveralls")
+    (license license:bsd-2)))
 
 (define-public erlang-telemetry
   (package
