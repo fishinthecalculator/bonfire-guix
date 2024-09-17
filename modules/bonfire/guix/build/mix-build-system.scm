@@ -8,12 +8,16 @@
   #:export (mix-build
             %standard-phases))
 
+(define elixir-libdir
+  (@@ (guix build mix-build-system) elixir-libdir))
+
 (define* (set-erl-env #:key inputs #:allow-other-keys)
   "Set environment variables.
 See: https://hexdocs.pm/mix/1.15.7/Mix.html#module-environment-variables"
   (setenv "ERL_LIBS"
           (string-join
-           (search-path-as-list '("lib/erlang/lib")
+           (search-path-as-list `("lib/erlang/lib"
+                                  ,(string-drop (elixir-libdir "") 1))
                                 (map (match-lambda
                                        ((label . package) package))
                                      inputs))
@@ -21,7 +25,7 @@ See: https://hexdocs.pm/mix/1.15.7/Mix.html#module-environment-variables"
 
 (define %standard-phases
   (modify-phases mix:%standard-phases
-    (add-after 'set-mix-env 'set-erl-env set-erl-env)))
+    (add-after 'set-elixir-version 'set-erl-env set-erl-env)))
 
 (define* (mix-build #:key inputs (phases %standard-phases)
                     #:allow-other-keys #:rest args)
