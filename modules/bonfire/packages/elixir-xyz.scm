@@ -161,3 +161,22 @@ property-based testing.")
      "This package provides a simple and modern Elixir socket server.")
     (home-page "https://hexdocs.pm/thousand_island/")
     (license license:expat)))
+
+(define-public elixir-untangle
+  (package
+    (name "elixir-untangle")
+    (version "0.3.1")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "untangle" version))
+       (sha256
+        (base32 "0w9r88fisvp0mg7b5qbr5dqv58kpn845ladikrbjwrbrhf2arbi5"))))
+    (build-system mix-build-system)
+    (propagated-inputs (list elixir-decorator))
+    (synopsis "Logging and inspecting with code location information")
+    (description "Untangle provides alternatives for @code{IO.inspect} and the
+macros in Elixir's @code{Logger} to output code location information.  It also
+provides a polyfill for @code{dbg} which was introduced in Elixir 1.14.")
+    (home-page "https://hexdocs.pm/untangle/")
+    (license license:asl2.0)))
