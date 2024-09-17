@@ -31,23 +31,6 @@ providing @code{Access} behaviour for custom structs.")
     (home-page "https://hexdocs.pm/accessible/")
     (license license:expat)))
 
-(define-public elixir-castore
-  (package
-    (name "elixir-castore")
-    (version "1.0.8")
-    (source
-     (origin
-       (method url-fetch)
-       (uri (hexpm-uri "castore" version))
-       (sha256
-        (base32 "1wc355skdq42p6l7ayzka63fww1s7jsf72wcrgcv2b3lxv96caqb"))))
-    (build-system mix-build-system)
-    (synopsis "Up-to-date CA certificate store")
-    (description "This package provides @code{elixir-castore}, an up-to-date CA
-certificate store.")
-    (home-page "https://hexdocs.pm/castore/")
-    (license license:asl2.0)))
-
 (define-public elixir-db-connection
   (package
     (name "elixir-db-connection")
