@@ -52,6 +52,24 @@ module to convert and send cover data to Coveralls.")
     (home-page "https://hex.pm/packages/coveralls")
     (license license:bsd-2)))
 
+(define-public erlang-proper
+  (package
+    (name "erlang-proper")
+    (version "1.4.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "proper" version))
+       (sha256
+        (base32 "1fwcas4a9kz3w3z1jqdk9lw8822srfjk9lcpvbxkxlsv3115ha0q"))))
+    (build-system rebar-build-system)
+    (synopsis "Property-based testing tool for Erlang")
+    (description
+     "This package provides a @code{QuickCheck-inspired} property-based testing tool
+for Erlang.")
+    (home-page "https://hexdocs.pm/proper/")
+    (license license:gpl3+)))
+
 (define-public erlang-telemetry
   (package
     (name "erlang-telemetry")
