@@ -159,6 +159,43 @@ and decode WKB, WKT, and @code{GeoJSON} formats.")
     (home-page "https://hexdocs.pm/geo/")
     (license license:expat)))
 
+(define-public elixir-myxql
+  (package
+    (name "elixir-myxql")
+    (version "0.7.1")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "myxql" version))
+       (sha256
+        (base32 "0dj9034nfyii8dmd7c1hdkvikgkfh5rd9hhahnshjfimagzwv4d4"))))
+    (build-system mix-build-system)
+    (arguments
+     (list
+      #:phases
+      #~(modify-phases %standard-phases
+          (add-before 'check 'set-erl-libs
+            (lambda _
+              (use-modules (srfi srfi-1))
+              (let* ((inputs
+                      (map second
+                           '(#$@(package-native-inputs this-package)
+                             #$@(package-inputs this-package))))
+                     (search-paths
+                      (search-path-as-list '("lib/erlang/lib")
+                                           inputs))
+                     (erl-libs
+                      (string-join search-paths ":")))
+                (setenv "ERL_LIBS" erl-libs)))))))
+    (native-inputs
+     (list erlang-binpp erlang-telemetry))
+    (inputs (list elixir-db-connection elixir-decimal elixir-geo elixir-jason
+                  elixir-table))
+    (synopsis "MySQL 5.5+ driver for Elixir")
+    (description "This library provides a @code{MySQL} 5.5+ driver for Elixir.")
+    (home-page "https://hexdocs.pm/myxql/")
+    (license license:asl2.0)))
+
 (define-public elixir-stream-data
   (package
     (name "elixir-stream-data")
