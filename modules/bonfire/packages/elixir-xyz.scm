@@ -141,3 +141,23 @@ for Elixir.")
 property-based testing.")
     (home-page "https://hexdocs.pm/stream_data/")
     (license license:asl2.0)))
+
+(define-public elixir-thousand-island
+  (package
+    (name "elixir-thousand-island")
+    (version "1.3.5")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "thousand_island" version))
+       (sha256
+        (base32 "107195wci96qdykkpw2x7c3bil3mdmmznf9jmxb4gzpx2r4rbrib"))))
+    (build-system mix-build-system)
+    (native-inputs
+     (list elixir-jason))
+    (propagated-inputs (list elixir-machete erlang-telemetry))
+    (synopsis "Pure Elixir socket server")
+    (description
+     "This package provides a simple and modern Elixir socket server.")
+    (home-page "https://hexdocs.pm/thousand_island/")
+    (license license:expat)))
