@@ -114,6 +114,22 @@ for manipulating Web protocols.")
     (home-page "https://hex.pm/packages/cowlib")
     (license license:isc)))
 
+(define-public erlang-erlang-color
+  (package
+    (name "erlang-erlang-color")
+    (version "1.0.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "erlang_color" version))
+       (sha256
+        (base32 "0f707vxihn3f9m3zxal38ajcihnfcwms77jcax0gbzn8i7jya5vb"))))
+    (build-system rebar-build-system)
+    (synopsis "ANSI colors for your Erlang")
+    (description "This library implements ANSI colors for your Erlang.")
+    (home-page "https://hex.pm/packages/erlang_color")
+    (license license:expat)))
+
 (define-public erlang-hut
   (package
     (name "erlang-hut")
