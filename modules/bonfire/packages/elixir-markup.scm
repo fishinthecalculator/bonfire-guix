@@ -84,4 +84,4 @@ Earmark and @code{EarmarkParser} tests.")
     (description "This package provides @code{elixir-makeup-c}, a library
 implementing a C lexer for the Makeup syntax highlighter.")
     (home-page "https://hexdocs.pm/makeup_c/")
-    (license license:bsd-1)))
+    (license license:bsd-2)))
