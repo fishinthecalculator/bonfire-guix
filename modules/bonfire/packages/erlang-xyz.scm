@@ -70,6 +70,24 @@ for Erlang.")
     (home-page "https://hexdocs.pm/proper/")
     (license license:gpl3+)))
 
+(define-public erlang-ranch
+  (package
+    (name "erlang-ranch")
+    (version "2.1.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "ranch" version))
+       (sha256
+        (base32 "05k9wxwi8fw0izg5f41j98lpdg4xzlj91i8ziq6jfxb15bxf6ki4"))))
+    (build-system rebar-build-system)
+    (synopsis "Socket acceptor pool for TCP protocols.")
+    (description "Ranch aims to provide everything you need to accept TCP
+connections with a small code base and low latency while being easy to use
+directly as an application or to embed into your own.")
+    (home-page "https://hex.pm/packages/ranch")
+    (license license:isc)))
+
 (define-public erlang-telemetry
   (package
     (name "erlang-telemetry")
