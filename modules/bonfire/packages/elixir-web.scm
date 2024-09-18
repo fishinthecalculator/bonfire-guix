@@ -125,6 +125,23 @@ HTML entities in a string.")
     (home-page "https://hexdocs.pm/html_entities/")
     (license license:expat)))
 
+(define-public elixir-html-sanitize-ex
+  (package
+    (name "elixir-html-sanitize-ex")
+    (version "1.4.3")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "html_sanitize_ex" version))
+       (sha256
+        (base32 "1dyc9fvkdrihmy32d85jqlzs9jrbijahq5dpdry9r57y98y8sx47"))))
+    (build-system mix-build-system)
+    (propagated-inputs (list erlang-mochiweb))
+    (synopsis "HTML sanitizer for Elixir")
+    (description "HTML sanitizer for Elixir.")
+    (home-page "https://hexdocs.pm/html_sanitize_ex/")
+    (license license:expat)))
+
 (define-public elixir-iconify-ex
   (package
     (name "elixir-iconify-ex")
