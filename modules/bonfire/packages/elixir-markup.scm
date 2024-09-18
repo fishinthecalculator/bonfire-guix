@@ -74,6 +74,28 @@ item A @code{String.Chars} implementation to convert them to text
     (home-page "https://hexdocs.pm/easyhtml/")
     (license license:asl2.0)))
 
+(define-public elixir-ex-doc
+  (package
+    (name "elixir-ex-doc")
+    (version "0.34.2")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "ex_doc" version))
+       (sha256
+        (base32 "1hcmbycrvd441cmbh5apsv7llkyk5rmdxlzyd88512i085mz3raw"))))
+    (build-system mix-build-system)
+    (native-inputs
+     (list elixir-easyhtml
+           elixir-jason
+           elixir-floki))
+    (propagated-inputs (list elixir-earmark-parser elixir-makeup-c elixir-makeup-elixir
+                  elixir-makeup-erlang elixir-makeup-html))
+    (synopsis "Documentation generation tool for Elixir")
+    (description "@code{ExDoc} is a documentation generation tool for Elixir.")
+    (home-page "https://hexdocs.pm/ex_doc/")
+    (license license:asl2.0)))
+
 (define-public elixir-floki
   (package
     (name "elixir-floki")
@@ -167,4 +189,3 @@ implementing an Erlang lexer for the Makeup syntax highlighter.")
 implementing an HTML lexer for the Makeup syntax highlighter.")
     (home-page "https://hexdocs.pm/makeup_html/")
     (license license:expat)))
-
