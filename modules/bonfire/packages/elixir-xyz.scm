@@ -365,6 +365,26 @@ property-based testing.")
     (home-page "https://hexdocs.pm/stream_data/")
     (license license:asl2.0)))
 
+(define-public elixir-telemetry-metrics
+  (package
+    (name "elixir-telemetry-metrics")
+    (version "1.0.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "telemetry_metrics" version))
+       (sha256
+        (base32 "0pbxsk8j3d9nwj6130lmmrlcmg4yjm66s4h5w0sab1kjhjri6dzj"))))
+    (build-system mix-build-system)
+    (propagated-inputs (list erlang-telemetry))
+    (synopsis
+     "Common interface for defining metrics based on Telemetry events")
+    (description
+     "This package provides a common interface for defining metrics based on Telemetry
+events.")
+    (home-page "https://hexdocs.pm/telemetry_metrics/")
+    (license license:asl2.0)))
+
 (define-public elixir-thousand-island
   (package
     (name "elixir-thousand-island")
