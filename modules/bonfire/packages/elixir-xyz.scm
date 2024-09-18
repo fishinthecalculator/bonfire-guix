@@ -200,6 +200,28 @@ for Elixir.")
     (home-page "https://hexdocs.pm/mime/")
     (license license:asl2.0)))
 
+(define-public elixir-nimble-options
+  (package
+    (name "elixir-nimble-options")
+    (version "1.1.1")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "nimble_options" version))
+       (sha256
+        (base32 "0i0bcmpsc02ga2llakgcvnw734rqn2dzx0j8k2vc8hllr9q286w2"))))
+    (build-system mix-build-system)
+    (native-inputs
+     (list elixir-castore
+           elixir-excoveralls))
+    (synopsis
+     "Validates and documents high-level options")
+    (description
+     "This package provides a tiny library for validating and documenting high-level
+options.")
+    (home-page "https://hexdocs.pm/nimble_options/")
+    (license license:asl2.0)))
+
 (define-public elixir-recase
   (package
     (name "elixir-recase")
