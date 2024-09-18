@@ -140,6 +140,25 @@ for Elixir.")
     (home-page "https://hexdocs.pm/mime/")
     (license license:asl2.0)))
 
+(define-public elixir-sourceror
+  (package
+    (name "elixir-sourceror")
+    (version "1.6.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "sourceror" version))
+       (sha256
+        (base32 "16gnj7wy7hfjzzp76rsmwp9kqd7w2qa3vy4fkk435kysha6fy2p9"))))
+    (build-system mix-build-system)
+    (native-inputs
+     (list elixir-excoveralls))
+    (synopsis "Utilities to work with Elixir source code")
+    (description "This package provides @code{elixir-sourceror}, a library
+implementing utilities to work with Elixir source code.")
+    (home-page "https://hexdocs.pm/sourceror/")
+    (license license:asl2.0)))
+
 (define-public elixir-stream-data
   (package
     (name "elixir-stream-data")
