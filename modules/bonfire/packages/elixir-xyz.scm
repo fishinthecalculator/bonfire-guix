@@ -477,3 +477,19 @@ provides a polyfill for @code{dbg} which was introduced in Elixir 1.14.")
     (description "This package provides a fresh approach to testing.")
     (home-page "https://hexdocs.pm/zest/")
     (license license:asl2.0)))
+
+(define-public elixir-zstream
+  (package
+    (name "elixir-zstream")
+    (version "0.6.4")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "zstream" version))
+       (sha256
+        (base32 "18fr77k6y8bix2xwaxpbxzw31dy1kp5p5sc5igz2rsxrdmdw7imc"))))
+    (build-system mix-build-system)
+    (synopsis "Streaming zip file writer and reader")
+    (description "This package provides a streaming zip file writer and reader.")
+    (home-page "https://hexdocs.pm/zstream/")
+    (license license:expat)))
