@@ -11,6 +11,7 @@
   #:use-module (guix packages)
   #:use-module (bonfire guix build-system mix)
   #:use-module (bonfire packages erlang-xyz)
+  #:use-module (bonfire packages elixir-markup)
   #:use-module (bonfire packages elixir-xyz))
 
 (define-public elixir-bandit
@@ -208,6 +209,51 @@ framework.")
     (description
      "This package provides live-reload functionality for Phoenix.")
     (home-page "https://hexdocs.pm/phoenix_live_reload/")
+    (license license:expat)))
+
+(define-public elixir-phoenix-live-view
+  (package
+    (name "elixir-phoenix-live-view")
+    (version "0.20.17")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "phoenix_live_view" version))
+       (sha256
+        (base32 "12z9bkvfan8bb9dicy8s4sswxy28dbd89q0drbdmzj3qzcgp87d6"))))
+    (build-system mix-build-system)
+    (arguments
+     (list #:tests? #f))
+    (native-inputs
+     (list elixir-html-entities
+           elixir-phoenix-live-reload))
+    (propagated-inputs
+     (list elixir-floki
+           elixir-jason
+           elixir-phoenix
+           elixir-phoenix-html
+           elixir-phoenix-template
+           elixir-phoenix-view
+           elixir-plug
+           erlang-telemetry))
+    (synopsis "Rich, real-time user experiences with server-rendered HTML")
+    (description "LiveView brings a unified experience to building web
+applications.  You no longer have to split work between client and server,
+across different toolings, layers, and abstractions.  Instead, LiveView
+enriches the server with a declarative and powerful model while keeping your
+code closer to your data (and ultimately your source of truth):
+
+@itemize
+@item Declarative server side rendering
+@item Rich templating language
+@item Diffs over the wire
+@item Live form validation
+@item File uploads with progress indicators
+@item Optimistic updates and transitions
+@item Live navigation
+@item Latency simulator
+@end itemize")
+    (home-page "https://hexdocs.pm/phoenix_live_view/")
     (license license:expat)))
 
 (define-public elixir-phoenix-pubsub
