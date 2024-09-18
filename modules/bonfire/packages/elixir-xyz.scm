@@ -2,6 +2,7 @@
 ;;; Copyright © 2024 Giacomo Leidi <goodoldpaul@autistici.org>
 
 (define-module (bonfire packages elixir-xyz)
+  #:use-module (gnu packages gettext)
   #:use-module (gnu packages elixir-xyz)
   #:use-module (guix download)
   #:use-module (guix git-download)
@@ -157,6 +158,30 @@ writer and parser).")
 and decode WKB, WKT, and @code{GeoJSON} formats.")
     (home-page "https://hexdocs.pm/geo/")
     (license license:expat)))
+
+(define-public elixir-gettext
+  (package
+    (name "elixir-gettext")
+    (version "0.26.1")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "gettext" version))
+       (sha256
+        (base32 "0d47y25shkpfw5qyai4p9w9cfaxd55jksy2j19w2ip5ri3qmdkh1"))))
+    (build-system mix-build-system)
+    (native-inputs
+     (list elixir-castore
+           elixir-excoveralls
+           elixir-jason))
+    (inputs
+     (list gnu-gettext))
+    (propagated-inputs (list elixir-expo))
+    (synopsis "Internationalization and localization through gettext")
+    (description "This package implements internationalization and localization
+through gettext.")
+    (home-page "https://hexdocs.pm/gettext/")
+    (license license:asl2.0)))
 
 (define-public elixir-mime
   (package
