@@ -219,6 +219,32 @@ for Elixir.")
     (home-page "https://hexdocs.pm/mime/")
     (license license:asl2.0)))
 
+(define-public elixir-mneme
+  (package
+    (name "elixir-mneme")
+    (version "0.8.2")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "mneme" version))
+       (sha256
+        (base32 "1rvdimi80cr34vr7i7vmihf40l7r3pyznhr66ncmrch7bphj1xj0"))))
+    (build-system mix-build-system)
+    (arguments
+     ;; Tests depend on elixir-ecto, they are turned off to avoid circular Guile
+     ;; modules dependencies.
+     (list #:tests? #f))
+    (propagated-inputs
+     (list elixir-nimble-options
+           elixir-owl
+           elixir-rewrite
+           elixir-sourceror))
+    (synopsis "Snapshot testing tool")
+    (description "This package implements a snapshot testing tool using familiar
+assertions.")
+    (home-page "https://hexdocs.pm/mneme/")
+    (license license:expat)))
+
 (define-public elixir-nimble-options
   (package
     (name "elixir-nimble-options")
