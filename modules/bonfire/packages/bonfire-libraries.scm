@@ -7,7 +7,35 @@
   #:use-module ((guix licenses)
                 #:prefix license:)
   #:use-module (guix packages)
-  #:use-module (bonfire guix build-system mix))
+  #:use-module (bonfire guix build-system mix)
+  #:use-module (bonfire packages elixir-databases))
+
+(define-public bonfire-data-edges
+  (let ((version "0.4.0")
+        (revision "0")
+        (commit "224212f3eb98bb2a534b4241b92b30dc30d0580b"))
+    (package
+      (name "bonfire-data-edges")
+      (version (git-version version revision commit))
+      (source
+       (origin
+         (method git-fetch)
+         (uri (git-reference
+               (url "https://github.com/bonfire-networks/bonfire_data_edges.git")
+               (commit commit)))
+         (file-name (git-file-name name version))
+         (sha256
+          (base32 "1vz7b8sjx03bcm4afbwarjpfmz8dl4pnqv95qjcwycm9gqvz13yz"))))
+      (build-system mix-build-system)
+      (native-inputs (list elixir-mess))
+      (propagated-inputs (list elixir-needle))
+      (synopsis
+       "Implements @code{Bonfire.Data.Edges.Edge}")
+      (description
+       "This package provides @code{bonfire-data-edges}, a library implementing
+@code{Bonfire.Data.Edges.Edge} and related.")
+      (home-page "https://github.com/bonfire-networks/bonfire_data_edges")
+      (license license:agpl3))))
 
 (define-public elixir-mess
   (let ((version "0.0.0")
