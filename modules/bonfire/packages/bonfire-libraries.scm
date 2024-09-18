@@ -28,10 +28,15 @@
                (commit commit)))
          (file-name (git-file-name name version))
          (sha256
-          (base32 "1vz7b8sjx03bcm4afbwarjpfmz8dl4pnqv95qjcwycm9gqvz13yz"))))
+          (base32 "1p4q2k4wz3c261p3xyp21vhg32n9c5zjlmwchqyifdmymfhvq3m1"))))
       (build-system mix-build-system)
-      (native-inputs (list elixir-mess))
-      (propagated-inputs (list elixir-needle))
+      (arguments
+       ;; There are no tests.
+       (list #:tests? #f))
+      (propagated-inputs (list bonfire-data-edges.git
+                               elixir-ecto-sparkles
+                               elixir-needle
+                               elixir-untangle))
       (synopsis
        "Schemas for accounts, users, etc.")
       (description
