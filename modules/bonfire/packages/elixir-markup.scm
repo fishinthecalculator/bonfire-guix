@@ -8,7 +8,8 @@
   #:use-module ((guix licenses)
                 #:prefix license:)
   #:use-module (guix packages)
-  #:use-module (bonfire guix build-system mix))
+  #:use-module (bonfire guix build-system mix)
+  #:use-module (bonfire packages elixir-xyz))
 
 (define-public elixir-earmark-ast-dsl
   (package
@@ -121,4 +122,24 @@ implementing an Elixir lexer for the Makeup syntax highlighter.")
 implementing an Erlang lexer for the Makeup syntax highlighter.")
     (home-page "https://hexdocs.pm/makeup_erlang/")
     (license license:bsd-2)))
+
+(define-public elixir-makeup-html
+  (package
+    (name "elixir-makeup-html")
+    (version "0.1.1")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "makeup_html" version))
+       (sha256
+        (base32 "19165idrm3qncvh63f3n7hpx4g3r536adsmggzfladi4qldsdwj4"))))
+    (build-system mix-build-system)
+    (native-inputs
+     (list elixir-stream-data))
+    (propagated-inputs (list elixir-makeup))
+    (synopsis "HTML lexer for the Makeup syntax highlighter")
+    (description "This package provides @code{elixir-makeup-html}, a library
+implementing an HTML lexer for the Makeup syntax highlighter.")
+    (home-page "https://hexdocs.pm/makeup_html/")
+    (license license:expat)))
 
