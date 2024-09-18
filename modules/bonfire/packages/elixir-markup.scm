@@ -29,3 +29,23 @@ conformant AST Nodes.  Its main purpose is to remove boilerplate code from
 Earmark and @code{EarmarkParser} tests.")
     (home-page "https://hexdocs.pm/earmark_ast_dsl/")
     (license license:asl2.0)))
+
+(define-public elixir-floki
+  (package
+    (name "elixir-floki")
+    (version "0.36.2")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "floki" version))
+       (sha256
+        (base32 "106mivn6ihpmcz57ksdqsb2q9nifk1hrjkvcndf4w1rgr45nqxm8"))))
+    (build-system mix-build-system)
+    (native-inputs
+     (list elixir-credo elixir-jason))
+    (synopsis
+     "Simple HTML parser")
+    (description
+     "Floki is a simple HTML parser that enables search for nodes using CSS selectors.")
+    (home-page "https://hexdocs.pm/floki/")
+    (license license:expat)))
