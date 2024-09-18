@@ -193,6 +193,36 @@ framework.")
     (home-page "https://hexdocs.pm/phoenix_html/")
     (license license:expat)))
 
+(define-public elixir-phoenix-live-head
+  (package
+    (name "elixir-phoenix-live-head")
+    (version "0.2.2")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "phoenix_live_head" version))
+       (sha256
+        (base32 "06ds5mqsibdrwzxn8rn5iisfkg8gnlzrfb4dgckwrxwrak43vzpx"))))
+    (build-system mix-build-system)
+    (native-inputs
+     (list elixir-excoveralls))
+    (propagated-inputs
+     (list elixir-ex-doc elixir-jason elixir-phoenix
+           elixir-phoenix-html elixir-phoenix-live-view))
+    (synopsis "HTML Head manipulation for Phoenix Live Views")
+    (description "This package provides commands for manipulating the HTML Head
+of Phoenix Live View applications while minimizing data over the wire.
+
+The available command actions support a variety of utility operations useful for
+HTML Head manipulation.  Such as setting or removing tag attributes and adding
+or removing CSS classes.
+
+A special feature is the use of the @code{@{dynamic@}} tag in values.  This
+saves data over the wire by only sending the dynamic part of an attributes
+value.")
+    (home-page "https://hexdocs.pm/phoenix_live_head/")
+    (license license:expat)))
+
 (define-public elixir-phoenix-live-reload
   (package
     (name "elixir-phoenix-live-reload")
@@ -204,7 +234,9 @@ framework.")
        (sha256
         (base32 "0g40aixr1qxfs6bl45kl1crk0w1ys52y14mc3jyz27xh7kbrrv5l"))))
     (build-system mix-build-system)
-    (inputs (list elixir-file-system elixir-phoenix))
+    (arguments
+     (list #:tests? #f))
+    (propagated-inputs (list elixir-file-system elixir-phoenix))
     (synopsis "Live-reload functionality for Phoenix")
     (description
      "This package provides live-reload functionality for Phoenix.")
