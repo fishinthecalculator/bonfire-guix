@@ -161,6 +161,29 @@ be a useful addition to your projects.")
     (home-page "https://hexdocs.pm/phoenix_view/")
     (license license:expat)))
 
+(define-public elixir-plug-cowboy
+  (package
+    (name "elixir-plug-cowboy")
+    (version "2.7.2")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "plug_cowboy" version))
+       (sha256
+        (base32 "0bxv37h5m0ypz2yc42pw4fdddghcdy0yh0608140j1i3xq8qlp94"))))
+    (build-system mix-build-system)
+    (arguments
+     (list
+      #:tests? #f))
+    (native-inputs
+     (list elixir-x509
+           erlang-hackney))
+    (propagated-inputs (list erlang-cowboy erlang-cowboy-telemetry elixir-plug))
+    (synopsis "A Plug adapter for Cowboy")
+    (description "This package provides a Plug adapter for Cowboy.")
+    (home-page "https://hexdocs.pm/plug_cowboy/")
+    (license license:asl2.0)))
+
 (define-public elixir-plug-crypto
   (package
     (name "elixir-plug-crypto")
