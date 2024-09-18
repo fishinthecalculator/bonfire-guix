@@ -156,6 +156,25 @@ for Elixir.")
     (home-page "https://hexdocs.pm/mime/")
     (license license:asl2.0)))
 
+(define-public elixir-recase
+  (package
+    (name "elixir-recase")
+    (version "0.8.1")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "recase" version))
+       (sha256
+        (base32 "1hp4sl3wavz2nb29azjkjayjp2vp0pin88xihnirxga3gqzddn4z"))))
+    (build-system mix-build-system)
+    (native-inputs
+     (list elixir-excoveralls))
+    (synopsis "Convert strings to any case you need.")
+    (description "@code{Recase} helps you to convert a string from any case to
+any case.")
+    (home-page "https://hexdocs.pm/recase/")
+    (license license:expat)))
+
 (define-public elixir-sourceror
   (package
     (name "elixir-sourceror")
