@@ -461,3 +461,19 @@ provides a polyfill for @code{dbg} which was introduced in Elixir 1.14.")
     (description "This package provides a library to conjugate English verbs.")
     (home-page "https://hexdocs.pm/verbs/")
     (license license:expat)))
+
+(define-public elixir-zest
+  (package
+    (name "elixir-zest")
+    (version "0.1.2")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "zest" version))
+       (sha256
+        (base32 "0jlpldb94wm1v2kavvsy5h7w5mvjmxnkssl48mp2iphmysnddqpb"))))
+    (build-system mix-build-system)
+    (synopsis "Fresh approach to testing in Elixir")
+    (description "This package provides a fresh approach to testing.")
+    (home-page "https://hexdocs.pm/zest/")
+    (license license:asl2.0)))
