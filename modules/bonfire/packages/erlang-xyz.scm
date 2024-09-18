@@ -64,8 +64,14 @@ module to convert and send cover data to Coveralls.")
         (base32 "07k5hbprnqvi2ym12fcaw5r2par8r6z0j9xa3jrcwwik31nvwyla"))))
     (build-system rebar-build-system)
     (propagated-inputs (list erlang-cowlib erlang-ranch))
-    (synopsis "Small, fast, modern HTTP server.")
-    (description "Small, fast, modern HTTP server.")
+    (synopsis "Small, fast, modern HTTP server")
+    (description "Cowboy aims to provide a complete HTTP stack in a small code
+base.  It is optimized for low latency and low memory usage, in part because it
+uses binary strings.
+
+Cowboy provides routing capabilities, selectively dispatching requests to
+handlers written in Erlang.  Because it uses Ranch for managing connections,
+Cowboy can easily be embedded in any other application.")
     (home-page "https://hex.pm/packages/cowboy")
     (license license:isc)))
 
