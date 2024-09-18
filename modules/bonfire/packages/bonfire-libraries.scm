@@ -10,7 +10,7 @@
   #:use-module (bonfire guix build-system mix)
   #:use-module (bonfire packages elixir-databases))
 
-(define-public bonfire-data-edges
+(define-public bonfire-data-edges.git
   (let ((version "0.4.0")
         (revision "0")
         (commit "224212f3eb98bb2a534b4241b92b30dc30d0580b"))
@@ -35,7 +35,7 @@
        "This package provides @code{bonfire-data-edges}, a library implementing
 @code{Bonfire.Data.Edges.Edge} and related.")
       (home-page "https://github.com/bonfire-networks/bonfire_data_edges")
-      (license license:agpl3))))
+      (license license:mpl2.0))))
 
 (define-public elixir-mess
   (let ((version "0.0.0")
