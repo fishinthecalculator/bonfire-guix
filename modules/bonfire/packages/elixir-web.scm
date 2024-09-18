@@ -13,6 +13,33 @@
   #:use-module (bonfire packages erlang-xyz)
   #:use-module (bonfire packages elixir-xyz))
 
+(define-public elixir-bandit
+  (package
+    (name "elixir-bandit")
+    (version "1.5.7")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "bandit" version))
+       (sha256
+        (base32 "1kbi2fjbnynqdm7lvd2w81nblv3v2pdm45mam4pymjyjhyp95pgj"))))
+    (build-system mix-build-system)
+    (arguments
+     ;; Tests depend on elixir-req which is not yet packaged.
+     (list #:tests? #f))
+    (propagated-inputs
+     (list elixir-hpax
+           elixir-plug
+           erlang-telemetry
+           elixir-thousand-island
+           elixir-websock))
+    (synopsis "HTTP server built for Plug & WebSock apps")
+    (description
+     "This package provides a pure-Elixir HTTP server built for Plug & @code{WebSock}
+apps.")
+    (home-page "https://hexdocs.pm/bandit/")
+    (license license:expat)))
+
 (define-public elixir-emote
   (package
     (name "elixir-emote")
