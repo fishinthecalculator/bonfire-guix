@@ -221,3 +221,22 @@ show some high-level examples and introduce the Plug's main building blocks.")
      "This package provides a specification for @code{WebSocket} connections.")
     (home-page "https://hexdocs.pm/websock/")
     (license license:expat)))
+
+(define-public elixir-x509
+  (package
+    (name "elixir-x509")
+    (version "0.8.9")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "x509" version))
+       (sha256
+        (base32 "0q8ny5wghdl1h86dqws18gq39jcwx31s422rqjr9q68ahxmb2gza"))))
+    (build-system mix-build-system)
+    (synopsis
+     "Elixir package for working with X.509 certificates")
+    (description
+     "Elixir package for working with X.509 certificates, Certificate Signing Requests
+(CSRs), Certificate Revocation Lists (CRLs) and RSA/ECC key pairs.")
+    (home-page "https://hexdocs.pm/x509/")
+    (license license:bsd-3)))
