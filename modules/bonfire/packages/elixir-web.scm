@@ -183,3 +183,20 @@ Phoenix to manage requests, responses, and websockets.  This documentation will
 show some high-level examples and introduce the Plug's main building blocks.")
     (home-page "https://hexdocs.pm/plug/")
     (license license:asl2.0)))
+
+(define-public elixir-websock
+  (package
+    (name "elixir-websock")
+    (version "0.5.3")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "websock" version))
+       (sha256
+        (base32 "0lxlp1h18595nqczfg15iy34kw5xbbab3yk6ml9cf8mcgwyla1b1"))))
+    (build-system mix-build-system)
+    (synopsis "Specification for WebSocket connections")
+    (description
+     "This package provides a specification for @code{WebSocket} connections.")
+    (home-page "https://hexdocs.pm/websock/")
+    (license license:expat)))
