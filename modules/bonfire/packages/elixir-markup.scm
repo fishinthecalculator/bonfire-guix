@@ -103,3 +103,22 @@ implementing a C lexer for the Makeup syntax highlighter.")
 implementing an Elixir lexer for the Makeup syntax highlighter.")
     (home-page "https://hexdocs.pm/makeup_elixir/")
     (license license:bsd-2)))
+
+(define-public elixir-makeup-erlang
+  (package
+    (name "elixir-makeup-erlang")
+    (version "1.0.1")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "makeup_erlang" version))
+       (sha256
+        (base32 "053qyls338qznyqi9x8s9l0mxdvh91p6lj8mxbb9imy2rkpa32ca"))))
+    (build-system mix-build-system)
+    (propagated-inputs (list elixir-makeup))
+    (synopsis "Erlang lexer for the Makeup syntax highlighter")
+    (description "This package provides @code{elixir-makeup-erlang}, a library
+implementing an Erlang lexer for the Makeup syntax highlighter.")
+    (home-page "https://hexdocs.pm/makeup_erlang/")
+    (license license:bsd-2)))
+
