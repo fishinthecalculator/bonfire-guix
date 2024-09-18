@@ -13,6 +13,36 @@
   #:use-module (bonfire packages elixir-web)
   #:use-module (bonfire packages elixir-xyz))
 
+(define-public bonfire-data-access-control.git
+  (let ((version "0.4.0")
+        (revision "0")
+        (commit "de2ca8f732499b4df8f5a9711f7b7bb38df76609"))
+    (package
+      (name "bonfire-data-access-control")
+      (version (git-version version revision commit))
+      (source
+       (origin
+         (method git-fetch)
+         (uri (git-reference
+               (url "https://github.com/bonfire-networks/bonfire_data_access_control.git")
+               (commit commit)))
+         (file-name (git-file-name name version))
+         (sha256
+          (base32 "0pfyb6si4sbzg9f8psw5lgz0h7jl29limc48sjc82lxq53nv22fr"))))
+      (build-system mix-build-system)
+      (arguments
+       ;; There are no tests.
+       (list #:tests? #f))
+      (native-inputs (list elixir-mess))
+      (propagated-inputs (list elixir-needle))
+      (synopsis
+       "Implements @code{Bonfire.Data.AccessControl}")
+      (description
+       "This package provides @code{bonfire-data-access-control}, a library implementing
+@code{Bonfire.Data.AccessControl}, @code{Bonfire.Boundaries} and related.")
+      (home-page "https://github.com/bonfire-networks/bonfire_data_access_control")
+      (license license:mpl2.0))))
+
 (define-public bonfire-data-identity.git
   (let ((version "0.4.0")
         (revision "0")
