@@ -57,19 +57,20 @@ Example: /gnu/store/…-elixir-1.14.0 → 1.14"
 
 ;;; This is the code to be upstreamed.
 
-(define %version-rx
-  (make-regexp "^(.*)-[0-9]+(\\.[0-9]+)?(\\.[0-9]+)?$"))
 (define %git-version-rx
   (make-regexp "^(.*)-[0-9]+(\\.[0-9]+)?(\\.[0-9]+)?-[0-9]+\\..+$"))
 
 (define (package-name->elixir-name name+ver)
   "Convert the Guix package NAME-VER to the corresponding Elixir name-version
 format.  Example: elixir-a-pkg-1.2.3 -> a_pkg or a_pkg-0.0.0-0.e51e36e -> a_pkg"
-  (define git-version-match (regexp-exec %git-version-rx (pk 'name+ver name+ver)))
-  (match:substring
-   (or (pk 'git-version-match git-version-match)
-       (regexp-exec %version-rx name+ver))
-   1))
+  (define git-version-match (regexp-exec %git-version-rx name+ver))
+  (if git-version-match
+      (match:substring git-version-match 1)
+      ((compose
+        (cute string-join <> "_")
+        (cute drop-right <> 1)
+        (cute string-split <> #\-))
+       (strip-prefix name+ver))))
 
 (define* (set-erl-env #:key inputs #:allow-other-keys)
   "Set environment variables.
