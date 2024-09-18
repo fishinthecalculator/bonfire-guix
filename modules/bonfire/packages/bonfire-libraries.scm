@@ -33,12 +33,13 @@
       (arguments
        ;; There are no tests.
        (list #:tests? #f))
+      (native-inputs (list elixir-mess))
       (propagated-inputs (list bonfire-data-edges.git
                                elixir-ecto-sparkles
                                elixir-needle
                                elixir-untangle))
       (synopsis
-       "Schemas for accounts, users, etc.")
+       "Schemas for accounts, users, etc")
       (description
        "This package provides @code{bonfire-data-identity}, a library implementing
 @code{Bonfire.Data.Edges.Identity} and related.")
