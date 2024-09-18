@@ -222,6 +222,25 @@ options.")
     (home-page "https://hexdocs.pm/nimble_options/")
     (license license:asl2.0)))
 
+(define-public elixir-owl
+  (package
+    (name "elixir-owl")
+    (version "0.11.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "owl" version))
+       (sha256
+        (base32 "1zjylqrqvklfnys5zmdzqkh9mr5kvfh1grqv0r5c0g4n1qzpixbk"))))
+    (build-system mix-build-system)
+    (native-inputs (list elixir-excoveralls))
+    (propagated-inputs (list elixir-ucwidth))
+    (synopsis "Toolkit for writing command-line user interfaces")
+    (description
+     "This package provides a toolkit for writing command-line user interfaces.")
+    (home-page "https://hexdocs.pm/owl/")
+    (license license:asl2.0)))
+
 (define-public elixir-recase
   (package
     (name "elixir-recase")
