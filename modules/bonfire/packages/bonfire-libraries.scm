@@ -9,12 +9,12 @@
   #:use-module (guix packages)
   #:use-module (bonfire guix build-system mix))
 
-(define-public mess
+(define-public elixir-mess
   (let ((version "0.0.0")
         (revision "0")
-        (commit "e51e36eed4a6e578350d2c7b10d38c469f4daa5e"))
+        (commit "bfe6e3c56c5237017c7fd0fd8d8d804bec267ca6"))
     (package
-      (name "mess")
+      (name "elixir-mess")
       (version (git-version version revision commit))
       (source
        (origin
@@ -24,7 +24,7 @@
                (commit commit)))
          (file-name (git-file-name name version))
          (sha256
-          (base32 "14j9qid86hdd6vfis5a64yjnhzjc673pnhpscxcsiv5p5x930xq7"))))
+          (base32 "0ql3lz4y7wfd4cl2dpdr63qh5vrqc6bpf1154yjcgpf947w0784y"))))
       (build-system mix-build-system)
       (synopsis
        "Simple, file-based dependency management with git and local overrides")
