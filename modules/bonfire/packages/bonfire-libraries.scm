@@ -2,13 +2,43 @@
 ;;; Copyright © 2024 Giacomo Leidi <goodoldpaul@autistici.org>
 
 (define-module (bonfire packages bonfire-libraries)
+  #:use-module (guix download)
   #:use-module (guix git-download)
   #:use-module (guix gexp)
   #:use-module ((guix licenses)
                 #:prefix license:)
   #:use-module (guix packages)
   #:use-module (bonfire guix build-system mix)
-  #:use-module (bonfire packages elixir-databases))
+  #:use-module (bonfire packages elixir-databases)
+  #:use-module (bonfire packages elixir-web)
+  #:use-module (bonfire packages elixir-xyz))
+
+(define-public bonfire-data-identity.git
+  (let ((version "0.4.0")
+        (revision "0")
+        (commit "89fdedc78b9fdbebbebef7aff04155d34fb29877"))
+    (package
+      (name "bonfire-data-identity")
+      (version (git-version version revision commit))
+      (source
+       (origin
+         (method git-fetch)
+         (uri (git-reference
+               (url "https://github.com/bonfire-networks/bonfire_data_identity.git")
+               (commit commit)))
+         (file-name (git-file-name name version))
+         (sha256
+          (base32 "1vz7b8sjx03bcm4afbwarjpfmz8dl4pnqv95qjcwycm9gqvz13yz"))))
+      (build-system mix-build-system)
+      (native-inputs (list elixir-mess))
+      (propagated-inputs (list elixir-needle))
+      (synopsis
+       "Schemas for accounts, users, etc.")
+      (description
+       "This package provides @code{bonfire-data-identity}, a library implementing
+@code{Bonfire.Data.Edges.Identity} and related.")
+      (home-page "https://github.com/bonfire-networks/bonfire_data_identity")
+      (license license:mpl2.0))))
 
 (define-public bonfire-data-edges.git
   (let ((version "0.4.0")
@@ -36,6 +66,32 @@
 @code{Bonfire.Data.Edges.Edge} and related.")
       (home-page "https://github.com/bonfire-networks/bonfire_data_edges")
       (license license:mpl2.0))))
+
+(define-public elixir-ecto-sparkles
+  (package
+    (name "elixir-ecto-sparkles")
+    (version "0.2.1")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "ecto_sparkles" version))
+       (sha256
+        (base32 "1ry89mk103jpv73971lwx3vmn9n6zd3ycya1ac1pr3r53f4hmkb0"))))
+    (build-system mix-build-system)
+    (propagated-inputs
+     (list elixir-ecto
+           elixir-ecto-dev-logger
+           elixir-ecto-sql
+           elixir-html-sanitize-ex
+           elixir-recase
+           elixir-untangle))
+    (synopsis
+     "Helper library to better join + preload Ecto associations")
+    (description
+     "This package provides andhelper library to better join + preload Ecto
+associations, and other goodies.")
+    (home-page "https://hexdocs.pm/ecto_sparkles/")
+    (license license:asl2.0)))
 
 (define-public elixir-mess
   (let ((version "0.0.0")
