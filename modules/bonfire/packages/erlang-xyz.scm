@@ -210,6 +210,22 @@ Erlang.")
     (home-page "https://hex.pm/packages/metrics")
     (license license:bsd-2)))
 
+(define-public erlang-mimerl
+  (package
+    (name "erlang-mimerl")
+    (version "1.3.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "mimerl" version))
+       (sha256
+        (base32 "17gy764b7288clkx4p4a4my3z19j7rwv1fghjpg1fwl8s585mqd1"))))
+    (build-system rebar-build-system)
+    (synopsis "Library to handle mimetypes")
+    (description "This package provides a library to handle mimetypes.")
+    (home-page "https://hex.pm/packages/mimerl")
+    (license license:expat)))
+
 (define-public erlang-proper
   (package
     (name "erlang-proper")
