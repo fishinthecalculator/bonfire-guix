@@ -125,6 +125,35 @@ HTML entities in a string.")
     (home-page "https://hexdocs.pm/html_entities/")
     (license license:expat)))
 
+(define-public elixir-iconify-ex
+  (package
+    (name "elixir-iconify-ex")
+    (version "0.5.2")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "iconify_ex" version))
+       (sha256
+        (base32 "1adilrzzg9gw5m353gwc4add3a4nf6wk562jdf0rz5p33hf782my"))))
+    (build-system mix-build-system)
+    (propagated-inputs
+     (list elixir-arrows
+           elixir-emote
+           elixir-floki
+           elixir-jason
+           elixir-phoenix-live-favicon
+           elixir-phoenix-live-view
+           elixir-recase
+           elixir-surface
+           elixir-untangle))
+    (synopsis
+     "Phoenix helpers for using icon sets")
+    (description
+     "This package provides Phoenix helpers for using the 100,000+ SVG icons
+from 100+ icon sets from @uref{https://iconify.design, iconify.design}.")
+    (home-page "https://hexdocs.pm/iconify_ex/")
+    (license license:expat)))
+
 (define-public elixir-mint-web-socket
   (package
     (name "elixir-mint-web-socket")
