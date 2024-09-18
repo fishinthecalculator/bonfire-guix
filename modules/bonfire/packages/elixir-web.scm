@@ -217,6 +217,17 @@ framework.")
     (home-page "https://hexdocs.pm/phoenix_html/")
     (license license:expat)))
 
+(define-public elixir-phoenix-html-3.3
+  (package
+    (inherit elixir-phoenix-html)
+    (version "3.3.4")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "phoenix_html" version))
+       (sha256
+        (base32 "1yskpy2wa0hm0arw9rji66z2bcvcg3cy6zjy87rsy51pxjmx6j82"))))))
+
 (define-public elixir-phoenix-live-favicon
   (package
     (name "elixir-phoenix-live-favicon")
@@ -517,6 +528,35 @@ Phoenix to manage requests, responses, and websockets.  This documentation will
 show some high-level examples and introduce the Plug's main building blocks.")
     (home-page "https://hexdocs.pm/plug/")
     (license license:asl2.0)))
+
+(define-public elixir-surface
+  (package
+    (name "elixir-surface")
+    (version "0.11.5")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "surface" version))
+       (sha256
+        (base32 "1l7d43m4rkvv3r6w9jpl5b6cdgr5yhgjsdpwd12vs7f9j43n9318"))))
+    (build-system mix-build-system)
+    (native-inputs
+     (list elixir-ecto
+           elixir-floki
+           elixir-jason
+           elixir-phoenix-ecto
+           elixir-sourceror))
+    (propagated-inputs
+     (list elixir-phoenix-html-3.3
+           elixir-phoenix-live-view
+           elixir-sourceror))
+    (synopsis "Server-side rendering component library for Phoenix")
+    (description
+     "This package provides Surface is a server-side rendering component library
+that allows developers to build rich interactive user-interfaces, writing
+minimal custom JavaScript.")
+    (home-page "https://surface-ui.org")
+    (license license:expat)))
 
 (define-public elixir-websock-adapter
   (package
