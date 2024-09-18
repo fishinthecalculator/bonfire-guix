@@ -52,6 +52,23 @@ module to convert and send cover data to Coveralls.")
     (home-page "https://hex.pm/packages/coveralls")
     (license license:bsd-2)))
 
+(define-public erlang-cowboy
+  (package
+    (name "erlang-cowboy")
+    (version "2.12.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "cowboy" version))
+       (sha256
+        (base32 "07k5hbprnqvi2ym12fcaw5r2par8r6z0j9xa3jrcwwik31nvwyla"))))
+    (build-system rebar-build-system)
+    (propagated-inputs (list erlang-cowlib erlang-ranch))
+    (synopsis "Small, fast, modern HTTP server.")
+    (description "Small, fast, modern HTTP server.")
+    (home-page "https://hex.pm/packages/cowboy")
+    (license license:isc)))
+
 (define-public erlang-cowlib
   (package
     (name "erlang-cowlib")
