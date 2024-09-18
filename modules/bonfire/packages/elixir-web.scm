@@ -13,6 +13,27 @@
   #:use-module (bonfire packages erlang-xyz)
   #:use-module (bonfire packages elixir-xyz))
 
+(define-public elixir-emote
+  (package
+    (name "elixir-emote")
+    (version "0.1.1")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "emote" version))
+       (sha256
+        (base32 "1km0hkvjpswxrvadrz4wjarpnv6wz3p15bdmmlw0yswnfvmij4ni"))))
+    (build-system mix-build-system)
+    (propagated-inputs (list elixir-phoenix-html))
+    (synopsis
+     "Convert emoticons and emoji names to emoji characters or images")
+    (description
+     "This package provides @code{elixir-emote}, a small library for
+converting emoticons and emoji names to emoji characters or images,
+including custom emoji.")
+    (home-page "https://hexdocs.pm/emote/")
+    (license license:wtfpl2)))
+
 (define-public elixir-hpack
   (package
     (name "elixir-hpack")
