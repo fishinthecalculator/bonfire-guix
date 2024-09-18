@@ -192,6 +192,24 @@ framework.")
     (home-page "https://hexdocs.pm/phoenix_html/")
     (license license:expat)))
 
+(define-public elixir-phoenix-live-reload
+  (package
+    (name "elixir-phoenix-live-reload")
+    (version "1.5.3")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "phoenix_live_reload" version))
+       (sha256
+        (base32 "0g40aixr1qxfs6bl45kl1crk0w1ys52y14mc3jyz27xh7kbrrv5l"))))
+    (build-system mix-build-system)
+    (inputs (list elixir-file-system elixir-phoenix))
+    (synopsis "Live-reload functionality for Phoenix")
+    (description
+     "This package provides live-reload functionality for Phoenix.")
+    (home-page "https://hexdocs.pm/phoenix_live_reload/")
+    (license license:expat)))
+
 (define-public elixir-phoenix-pubsub
   (package
     (name "elixir-phoenix-pubsub")
