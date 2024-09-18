@@ -3,6 +3,7 @@
 
 (define-module (bonfire packages erlang-xyz)
   #:use-module (gnu packages erlang)
+  #:use-module (gnu packages erlang-xyz)
   #:use-module (guix build-system rebar)
   #:use-module (guix download)
   #:use-module (guix git-download)
@@ -149,6 +150,35 @@ for manipulating Web protocols.")
 for code instrumentation and metrics collection.")
     (home-page "https://hexdocs.pm/exometer_core/")
     (license license:mpl2.0)))
+
+(define-public erlang-hackney
+  (package
+    (name "erlang-hackney")
+    (version "1.20.1")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "hackney" version))
+       (sha256
+        (base32 "1qrqmzcqq1g8rzwcz54rjwmfrh7ydgizw609s6kw18m2y7jr947y"))))
+    (build-system rebar-build-system)
+    (arguments
+     ;; Tests depend on erlang-jsone which is not packaged yet.
+     (list
+      #:tests? #f))
+    (propagated-inputs
+     (list erlang-certifi
+           erlang-idna
+           erlang-metrics
+           erlang-mimerl
+           erlang-parse-trans
+           erlang-ssl-verify-fun
+           erlang-unicode-util-compat))
+    (synopsis "Simple HTTP client")
+    (description "This package provides @code{erlang-hackney}, a simple HTTP
+client.")
+    (home-page "https://hexdocs.pm/hackney/")
+    (license license:asl2.0)))
 
 (define-public erlang-hut
   (package
