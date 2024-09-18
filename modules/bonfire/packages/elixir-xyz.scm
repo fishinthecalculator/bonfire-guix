@@ -183,6 +183,25 @@ through gettext.")
     (home-page "https://hexdocs.pm/gettext/")
     (license license:asl2.0)))
 
+(define-public elixir-glob-ex
+  (package
+    (name "elixir-glob-ex")
+    (version "0.1.8")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "glob_ex" version))
+       (sha256
+        (base32 "0r64861dbv1gcyk1zpfalhxc8h0lk11hl9n96yln16j154bx0fcy"))))
+    (build-system mix-build-system)
+    (arguments
+     ;; Tests depend on prove from hex.pm, which is not packaged yet.
+     (list #:tests? #f))
+    (synopsis "Library for glob expressions.")
+    (description "This package provides a library for glob expressions.")
+    (home-page "https://hexdocs.pm/glob_ex/")
+    (license license:expat)))
+
 (define-public elixir-mime
   (package
     (name "elixir-mime")
