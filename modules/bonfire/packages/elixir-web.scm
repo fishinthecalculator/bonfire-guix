@@ -157,7 +157,7 @@ Phoenix Framework.")
         (base32 "01j28jf0q1h5pk9ndf7s6jx9m489jyf24byabjpkyxf6wpq8231c"))))
     (build-system mix-build-system)
     (native-inputs (list elixir-jason))
-    (inputs (list elixir-phoenix-html))
+    (propagated-inputs (list elixir-phoenix-html))
     (synopsis "Template rendering for Phoenix")
     (description "Template rendering for Phoenix.")
     (home-page "https://hexdocs.pm/phoenix_template/")
@@ -176,7 +176,7 @@ Phoenix Framework.")
     (build-system mix-build-system)
     (native-inputs
      (list elixir-jason))
-    (inputs (list elixir-phoenix-html elixir-phoenix-template))
+    (propagated-inputs (list elixir-phoenix-html elixir-phoenix-template))
     (synopsis "View layer in Phoenix v1.0-v1.6 apps")
     (description "Within LiveView and HTML apps, @code{Phoenix.View} has fallen
 out of fashion in favor of @code{Phoenix.Component}.  See the \"Replaced by

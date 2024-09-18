@@ -60,7 +60,7 @@ Earmark and @code{EarmarkParser} tests.")
        (sha256
         (base32 "01jxhj3hpivf5c0x7d11c8xrx3d0ln6wsa78lc58g90j2vwkdadn"))))
     (build-system mix-build-system)
-    (inputs (list elixir-floki))
+    (propagated-inputs (list elixir-floki))
     (synopsis "Tiny wrapper around Floki")
     (description "@code{EasyHTML} makes working with HTML easy.  It is a tiny
 wrapper around Floki that adds conveniences:
