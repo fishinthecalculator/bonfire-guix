@@ -60,6 +60,25 @@ for Elixir.")
     (home-page "https://hexdocs.pm/ecto/")
     (license license:asl2.0)))
 
+(define-public elixir-ecto-dev-logger
+  (package
+    (name "elixir-ecto-dev-logger")
+    (version "0.13.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "ecto_dev_logger" version))
+       (sha256
+        (base32 "13vml7nj7vxis6gfdr6p5gd4nrdiji1ya2wv6xzn51g9vm2jpv0p"))))
+    (build-system mix-build-system)
+    (native-inputs (list elixir-ecto-sql))
+    (propagated-inputs (list elixir-ecto elixir-geo elixir-jason))
+    (synopsis "Alternative Ecto logger for development")
+    (description "This package provides an alternative Ecto logger for
+development.")
+    (home-page "https://hexdocs.pm/ecto_dev_logger/")
+    (license license:asl2.0)))
+
 (define-public elixir-ecto-sql
   (package
     (name "elixir-ecto-sql")
