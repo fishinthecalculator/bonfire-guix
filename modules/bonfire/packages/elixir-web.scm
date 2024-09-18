@@ -11,6 +11,7 @@
   #:use-module (guix packages)
   #:use-module (bonfire guix build-system mix)
   #:use-module (bonfire packages erlang-xyz)
+  #:use-module (bonfire packages elixir-databases)
   #:use-module (bonfire packages elixir-markup)
   #:use-module (bonfire packages elixir-xyz))
 
@@ -174,6 +175,29 @@ connection struct, such as having one process handle multiple connections or
 having different kinds of processes handle connections.")
     (home-page "https://hexdocs.pm/mint/")
     (license license:asl2.0)))
+
+(define-public elixir-phoenix-ecto
+  (package
+    (name "elixir-phoenix-ecto")
+    (version "4.6.2")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "phoenix_ecto" version))
+       (sha256
+        (base32 "0nfdbwxvx24468fan8cd8nc34nlnnpbmv32z1zh6ps4xyljx151z"))))
+    (build-system mix-build-system)
+    (propagated-inputs
+     (list elixir-ecto
+           elixir-phoenix-html
+           elixir-plug
+           elixir-postgrex))
+    (synopsis "Phoenix and Ecto integration with support for concurrent
+acceptance testing")
+    (description "A project that integrates Phoenix with Ecto, implementing all
+relevant protocols.")
+    (home-page "https://hexdocs.pm/phoenix_ecto/")
+    (license license:expat)))
 
 (define-public elixir-phoenix-html
   (package
