@@ -45,7 +45,7 @@ return formatted data instead of performing direct IO write.")
        (sha256
         (base32 "18q4c8bcrpa48mvwpwdh51ma84zfxhcmd70qh2956jy6m05dnm6d"))))
     (build-system rebar-build-system)
-    (inputs (list erlang-jsx))
+    (propagated-inputs (list erlang-jsx))
     (synopsis "Coveralls for Erlang")
     (description "This package provides @code{erlang-coveralls}, an Erlang
 module to convert and send cover data to Coveralls.")
@@ -201,6 +201,22 @@ directly as an application or to embed into your own.")
 Erlang-based systems.")
     (home-page "https://hexdocs.pm/setup/")
     (license license:asl2.0)))
+
+(define-public erlang-tdiff
+  (package
+    (name "erlang-tdiff")
+    (version "0.1.2")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "tdiff" version))
+       (sha256
+        (base32 "0xbq7p9ii2kp49ms1kylj92ih2jiwvqwimb8jy4aalljz5lf3hp0"))))
+    (build-system rebar-build-system)
+    (synopsis "Difference library")
+    (description "This package provides a difference library.")
+    (home-page "https://hex.pm/packages/tdiff")
+    (license license:lgpl2.0)))
 
 (define-public erlang-telemetry
   (package
