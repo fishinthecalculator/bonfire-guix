@@ -256,6 +256,24 @@ Erlang.")
     (home-page "https://hex.pm/packages/mimerl")
     (license license:expat)))
 
+(define-public erlang-mochiweb
+  (package
+    (name "erlang-mochiweb")
+    (version "3.2.2")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "mochiweb" version))
+       (sha256
+        (base32 "1ma1p868xdgsl5jqn3hhi7cixkklw57jk49d4jrp1hj43cgya521"))))
+    (build-system rebar-build-system)
+    (arguments
+     (list #:tests? #f))
+    (synopsis "MochiMedia Web Server")
+    (description "@code{MochiMedia} Web Server.")
+    (home-page "https://hexdocs.pm/mochiweb/")
+    (license license:expat)))
+
 (define-public erlang-proper
   (package
     (name "erlang-proper")
