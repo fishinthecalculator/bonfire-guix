@@ -169,6 +169,23 @@ directly as an application or to embed into your own.")
     (home-page "https://hex.pm/packages/ranch")
     (license license:isc)))
 
+(define-public erlang-setup
+  (package
+    (name "erlang-setup")
+    (version "2.2.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "setup" version))
+       (sha256
+        (base32 "1znjcm0dpcyhd3vjm7azqngrqf49a01f41f6hm8dsw94mc6aylhx"))))
+    (build-system rebar-build-system)
+    (synopsis "Generic setup application for Erlang-based systems")
+    (description "This package implements a generic setup application for
+Erlang-based systems.")
+    (home-page "https://hexdocs.pm/setup/")
+    (license license:asl2.0)))
+
 (define-public erlang-telemetry
   (package
     (name "erlang-telemetry")
