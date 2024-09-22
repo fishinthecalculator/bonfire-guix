@@ -398,6 +398,26 @@ any case.")
     (home-page "https://hexdocs.pm/recase/")
     (license license:expat)))
 
+(define-public elixir-recode
+  (package
+    (name "elixir-recode")
+    (version "0.7.3")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "recode" version))
+       (sha256
+        (base32 "1n3gqgcl1qx5h1z9yqx28nbavgydvivm3cr3qifnbdwry07zb365"))))
+    (build-system mix-build-system)
+    (native-inputs
+     (list elixir-excoveralls elixir-mox))
+    (propagated-inputs
+     (list elixir-escape elixir-glob-ex elixir-rewrite))
+    (synopsis "Experimental linter with autocorrection.")
+    (description "An experimental linter with autocorrection.")
+    (home-page "https://hexdocs.pm/recode/")
+    (license license:expat)))
+
 (define-public elixir-rewrite
   (package
     (name "elixir-rewrite")
