@@ -67,6 +67,24 @@ implementing a handful of (mostly) arrow macros.")
     (home-page "https://hexdocs.pm/assert_value/")
     (license license:expat)))
 
+(define-public elixir-beam-file
+  (package
+    (name "elixir-beam-file")
+    (version "0.6.2")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "beam_file" version))
+       (sha256
+        (base32 "0mlwrh5sxvz36qqqwbyhqz9xyx93c3bv04vjmpf4wrxdba79xa89"))))
+    (build-system mix-build-system)
+    (native-inputs
+     (list elixir-excoveralls elixir-recode))
+    (synopsis "Interface to the BEAM file format and a decompiler")
+    (description "An interface to the BEAM file format and a decompiler.")
+    (home-page "https://hexdocs.pm/beam_file/")
+    (license license:expat)))
+
 (define-public elixir-decimal
   (package
     (name "elixir-decimal")
