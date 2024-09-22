@@ -121,6 +121,23 @@ implementing a handful of (mostly) arrow macros.")
     (home-page "https://hexdocs.pm/calendar_interval/")
     (license license:asl2.0)))
 
+(define-public elixir-combine
+  (package
+    (name "elixir-combine")
+    (version "0.10.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "combine" version))
+       (sha256
+        (base32 "06s5y8b0snr1s5ax9v3s7rc6c8xf5vj6878d1mc7cc07j0bvq78v"))))
+    (build-system mix-build-system)
+    (synopsis "Parser combinator library for Elixir projects")
+    (description
+     "This package provides a parser combinator library for Elixir projects.")
+    (home-page "https://hexdocs.pm/combine/")
+    (license license:expat)))
+
 (define-public elixir-decimal
   (package
     (name "elixir-decimal")
