@@ -49,6 +49,24 @@ implementing a handful of (mostly) arrow macros.")
     (home-page "https://hexdocs.pm/arrows/")
     (license license:asl2.0)))
 
+(define-public elixir-assert-value
+  (package
+    (name "elixir-assert-value")
+    (version "0.10.4")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "assert_value" version))
+       (sha256
+        (base32 "1h6jn7v6jiyx27qibmh2ami2l1ywzl14q9jbn1bw5wmz5ckq89w0"))))
+    (build-system mix-build-system)
+    (synopsis
+     "@code{ExUnit}'s assert that writes and updates tests for you")
+    (description
+     "@code{ExUnit's} assert that writes and updates tests for you.")
+    (home-page "https://hexdocs.pm/assert_value/")
+    (license license:expat)))
+
 (define-public elixir-decimal
   (package
     (name "elixir-decimal")
