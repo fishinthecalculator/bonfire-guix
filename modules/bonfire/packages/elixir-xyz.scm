@@ -394,6 +394,23 @@ options.")
     (home-page "https://hexdocs.pm/owl/")
     (license license:asl2.0)))
 
+(define-public elixir-poison
+  (package
+    (name "elixir-poison")
+    (version "6.0.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "poison" version))
+       (sha256
+        (base32 "18irww20fya32rp03q0r2fzbf1qw51w6lbb4chwmlxwl5din945v"))))
+    (build-system mix-build-system)
+    (propagated-inputs (list elixir-decimal))
+    (synopsis "Fast, pure Elixir JSON library")
+    (description "An incredibly fast, pure Elixir JSON library.")
+    (home-page "https://hexdocs.pm/poison/")
+    (license license:bsd-0)))
+
 (define-public elixir-prove
   (package
     (name "elixir-prove")
