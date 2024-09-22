@@ -129,6 +129,38 @@ Repository (CLDR).")
     (home-page "https://hexdocs.pm/ex_cldr_lists/")
     (license license:asl2.0)))
 
+(define-public elixir-ex-cldr-locale-display
+  (package
+    (name "elixir-ex-cldr-locale-display")
+    (version "1.5.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "ex_cldr_locale_display" version))
+       (sha256
+        (base32 "04ns3nbpflxqbb2dq0c1mrzlvzccc31z4gb53adac52fws009wlv"))))
+    (build-system mix-build-system)
+    (arguments
+     (list
+      #:phases
+      #~(modify-phases %standard-phases
+          (add-after 'unpack 'override-mix-env
+            (lambda _
+              (symlink (string-append (getcwd) "/config/release.exs")
+                       "config/prod.exs"))))))
+    (propagated-inputs
+     (list elixir-ex-cldr
+           elixir-ex-cldr-currencies
+           elixir-ex-cldr-territories
+           elixir-jason))
+    (synopsis
+     "Locale display name presentation")
+    (description
+     "Locale display name presentation for Common Locale Data Repository (CLDR)
+locales.")
+    (home-page "https://hexdocs.pm/ex_cldr_locale_display/")
+    (license license:asl2.0)))
+
 (define-public elixir-ex-cldr-numbers
   (package
     (name "elixir-ex-cldr-numbers")
