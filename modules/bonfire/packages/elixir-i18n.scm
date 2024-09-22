@@ -53,6 +53,34 @@ DTIF registry data.")
     (home-page "https://hexdocs.pm/digital_token/")
     (license license:asl2.0)))
 
+(define-public elixir-ex-cldr-calendars
+  (package
+    (name "elixir-ex-cldr-calendars")
+    (version "1.26.2")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "ex_cldr_calendars" version))
+       (sha256
+        (base32 "0dggm1ib5f8jg4faxk975afafl283sdy21cj9aalbldv7xzq92dn"))))
+    (build-system mix-build-system)
+    (native-inputs
+     (list elixir-stream-data))
+    (propagated-inputs
+     (list elixir-calendar-interval
+           elixir-ex-cldr-lists
+           elixir-ex-cldr-numbers
+           elixir-ex-cldr-units
+           elixir-ex-doc
+           elixir-jason))
+    (synopsis
+     "Localized month and week-based calendars")
+    (description
+     "Localized month and week-based calendars and calendar functions based upon CLDR
+data.")
+    (home-page "https://hexdocs.pm/ex_cldr_calendars/")
+    (license license:asl2.0)))
+
 (define-public elixir-ex-cldr-currencies
   (package
     (name "elixir-ex-cldr-currencies")
