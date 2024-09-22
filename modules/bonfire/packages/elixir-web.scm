@@ -162,6 +162,25 @@ HTML entities in a string.")
     (home-page "https://hexdocs.pm/html_sanitize_ex/")
     (license license:expat)))
 
+(define-public elixir-httpoison
+  (package
+    (name "elixir-httpoison")
+    (version "2.2.1")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "httpoison" version))
+       (sha256
+        (base32 "1pyjqbm6y88yws3956izxc1wvjhrjzizidg49zhq17a25xnlwdji"))))
+    (build-system mix-build-system)
+    (arguments
+     (list #:tests? #f))
+    (propagated-inputs (list erlang-hackney))
+    (synopsis "Yet Another HTTP client for Elixir")
+    (description "Yet Another HTTP client for Elixir powered by hackney.")
+    (home-page "https://hexdocs.pm/httpoison/")
+    (license license:expat)))
+
 (define-public elixir-iconify-ex
   (package
     (name "elixir-iconify-ex")
