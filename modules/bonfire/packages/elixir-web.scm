@@ -682,7 +682,7 @@ minimal custom JavaScript.")
     (home-page "https://hexdocs.pm/x509/")
     (license license:bsd-3)))
 
-;; These live here just because they depend on elixir-plug.
+;; These live here just because they depend on elixir-plug and elixir-mint.
 
 (define-public elixir-error-message
   (package
@@ -722,3 +722,20 @@ minimal custom JavaScript.")
      "Helper tools for making ecto interactions more pleasant and shorter.")
     (home-page "https://hexdocs.pm/ecto_shorts/")
     (license license:expat)))
+
+(define-public elixir-tz
+  (package
+    (name "elixir-tz")
+    (version "0.28.1")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "tz" version))
+       (sha256
+        (base32 "12lchkhdxbv8ai09i2lsy394yx1xrfq1yz5p8dn3qr0236ma3p5z"))))
+    (build-system mix-build-system)
+    (propagated-inputs (list elixir-castore elixir-mint))
+    (synopsis "Time zone support for Elixir")
+    (description "Time zone support for Elixir.")
+    (home-page "https://hexdocs.pm/tz/")
+    (license license:asl2.0)))
