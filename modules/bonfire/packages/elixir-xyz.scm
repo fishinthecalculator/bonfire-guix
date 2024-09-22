@@ -629,6 +629,22 @@ powered by sourceror.")
     (home-page "https://hexdocs.pm/rewrite/")
     (license license:expat)))
 
+(define-public elixir-sizeable
+  (package
+    (name "elixir-sizeable")
+    (version "1.0.2")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "sizeable" version))
+       (sha256
+        (base32 "0qhpc1h5iks04mcb2ypp7pkjhh9skq586l6a02s7g9zvdn759asb"))))
+    (build-system mix-build-system)
+    (synopsis "An Elixir library to make file sizes human-readable.")
+    (description "Elixir library to make file sizes human-readable.")
+    (home-page "https://hexdocs.pm/sizeable/")
+    (license license:expat)))
+
 (define-public elixir-sourceror
   (package
     (name "elixir-sourceror")
