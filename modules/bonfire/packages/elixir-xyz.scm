@@ -499,6 +499,22 @@ options.")
     (home-page "https://hexdocs.pm/owl/")
     (license license:asl2.0)))
 
+(define-public elixir-pathex
+  (package
+    (name "elixir-pathex")
+    (version "2.5.3")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "pathex" version))
+       (sha256
+        (base32 "0c28l0pa62sa06gvhhiwvsspl1j6jnjg0r10pa1za0q3gp1fyykn"))))
+    (build-system mix-build-system)
+    (synopsis "Functional lenses for nested structures")
+    (description "Functional lenses for nested structures.")
+    (home-page "https://hexdocs.pm/pathex/")
+    (license license:bsd-2)))
+
 (define-public elixir-poison
   (package
     (name "elixir-poison")
