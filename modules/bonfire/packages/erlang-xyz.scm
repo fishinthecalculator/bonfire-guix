@@ -327,6 +327,26 @@ Erlang-based systems.")
     (home-page "https://hexdocs.pm/setup/")
     (license license:asl2.0)))
 
+(define-public erlang-shards
+  (package
+    (name "erlang-shards")
+    (version "1.1.1")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "shards" version))
+       (sha256
+        (base32 "1nlfx82x9wpqlhyc5j22xjxdpl1kyhdx71mzbyhwss36mrfh96hn"))))
+    (build-system rebar-build-system)
+    (arguments
+     (list
+      #:tests? #f))
+    (synopsis "Erlang/Elixir library for partitioned or sharded ETS tables")
+    (description
+     "Erlang/Elixir library for partitioned or sharded ETS tables.")
+    (home-page "https://hexdocs.pm/shards/")
+    (license license:expat)))
+
 (define-public erlang-tdiff
   (package
     (name "erlang-tdiff")
