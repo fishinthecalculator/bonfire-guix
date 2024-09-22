@@ -105,6 +105,24 @@ implementing function decorators for Elixir.")
     (home-page "https://hexdocs.pm/decorator/")
     (license license:expat)))
 
+(define-public elixir-escape
+  (package
+    (name "elixir-escape")
+    (version "0.1.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "escape" version))
+       (sha256
+        (base32 "1kcifh2b6g5h3lh79m3hsmskh8xm07a0c4xwakgmawb7nhnykn55"))))
+    (build-system mix-build-system)
+    (native-inputs
+     (list elixir-prove))
+    (synopsis "ANSI escape tool")
+    (description "An ANSI escape tool.")
+    (home-page "https://hexdocs.pm/escape/")
+    (license license:expat)))
+
 (define-public elixir-ex-ulid
   (package
     (name "elixir-ex-ulid")
