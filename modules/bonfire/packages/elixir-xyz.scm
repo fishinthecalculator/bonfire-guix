@@ -5,7 +5,6 @@
   #:use-module (gnu packages gettext)
   #:use-module (gnu packages elixir-xyz)
   #:use-module (guix download)
-  #:use-module (guix git-download)
   #:use-module (guix gexp)
   #:use-module ((guix licenses)
                 #:prefix license:)
