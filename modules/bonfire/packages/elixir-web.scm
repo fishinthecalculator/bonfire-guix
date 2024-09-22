@@ -12,6 +12,7 @@
   #:use-module (bonfire guix build-system mix)
   #:use-module (bonfire packages erlang-xyz)
   #:use-module (bonfire packages elixir-databases)
+  #:use-module (bonfire packages elixir-i18n)
   #:use-module (bonfire packages elixir-markup)
   #:use-module (bonfire packages elixir-xyz))
 
@@ -41,6 +42,25 @@
 apps.")
     (home-page "https://hexdocs.pm/bandit/")
     (license license:expat)))
+
+(define-public elixir-ex-cldr-plugs
+  (package
+    (name "elixir-ex-cldr-plugs")
+    (version "1.3.3")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "ex_cldr_plugs" version))
+       (sha256
+        (base32 "1azambs6sqyapgfbazvn4lsa5jcr03qdsrf82lavg4crga6zmsr3"))))
+    (build-system mix-build-system)
+    (propagated-inputs (list elixir-ex-cldr elixir-gettext elixir-jason elixir-plug))
+    (synopsis
+     "Plugs supporting CLDR")
+    (description
+     "Plugs supporting CLDR and setting the locale from requests and request headers.")
+    (home-page "https://hexdocs.pm/ex_cldr_plugs/")
+    (license license:asl2.0)))
 
 (define-public elixir-emote
   (package
