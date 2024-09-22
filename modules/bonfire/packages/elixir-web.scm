@@ -661,3 +661,24 @@ minimal custom JavaScript.")
 (CSRs), Certificate Revocation Lists (CRLs) and RSA/ECC key pairs.")
     (home-page "https://hexdocs.pm/x509/")
     (license license:bsd-3)))
+
+;; These live here just because they depend on elixir-plug.
+
+(define-public elixir-error-message
+  (package
+    (name "elixir-error-message")
+    (version "0.3.2")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "error_message" version))
+       (sha256
+        (base32 "1ynqba5rbai6md574k0k76achaaqzznzv0gm2awdbxqqqvq1phxk"))))
+    (build-system mix-build-system)
+    (native-inputs (list elixir-excoveralls))
+    (propagated-inputs (list elixir-jason elixir-plug))
+    (synopsis "Make errors consistent across your system")
+    (description
+     "Error system to help make errors consistent across your system.")
+    (home-page "https://hexdocs.pm/error_message/")
+    (license license:expat)))
