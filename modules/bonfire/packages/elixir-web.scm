@@ -335,6 +335,26 @@ having different kinds of processes handle connections.")
     (home-page "https://hexdocs.pm/opentelemetry_semantic_conventions/")
     (license license:asl2.0)))
 
+(define-public elixir-opentelemetry-api
+  (package
+    (name "elixir-opentelemetry-api")
+    (version "1.3.1")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "opentelemetry_api" version))
+       (sha256
+        (base32 "1h852mhnkwan1javf26wl58bpnxgngvfbas8prhsrqvihv1mr2ly"))))
+    (build-system mix-build-system)
+    (arguments
+     ;;Tests depend on covertool, which is not packaged yet.
+     (list #:tests? #f))
+    (propagated-inputs (list elixir-opentelemetry-semantic-conventions))
+    (synopsis "OpenTelemetry API")
+    (description "@code{OpenTelemetry} API.")
+    (home-page "https://hexdocs.pm/opentelemetry_api/")
+    (license license:asl2.0)))
+
 (define-public elixir-phoenix-ecto
   (package
     (name "elixir-phoenix-ecto")
