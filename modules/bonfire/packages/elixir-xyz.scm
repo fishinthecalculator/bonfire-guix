@@ -532,6 +532,23 @@ options.")
     (home-page "https://hexdocs.pm/poison/")
     (license license:bsd-0)))
 
+(define-public elixir-process-tree
+  (package
+    (name "elixir-process-tree")
+    (version "0.1.3")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "process_tree" version))
+       (sha256
+        (base32 "00j3nbih4biar4vc1aamla2frlqsmy4xxh2g2gfq07ymir7qnvhm"))))
+    (build-system mix-build-system)
+    (synopsis "Module for avoiding global state in Elixir applications")
+    (description
+     "This package provides a module for avoiding global state in Elixir applications.")
+    (home-page "https://hexdocs.pm/process_tree/")
+    (license license:expat)))
+
 (define-public elixir-prove
   (package
     (name "elixir-prove")
