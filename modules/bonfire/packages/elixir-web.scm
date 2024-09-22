@@ -14,7 +14,8 @@
   #:use-module (bonfire packages elixir-databases)
   #:use-module (bonfire packages elixir-i18n)
   #:use-module (bonfire packages elixir-markup)
-  #:use-module (bonfire packages elixir-xyz))
+  #:use-module (bonfire packages elixir-xyz)
+  #:use-module (bonfire utils))
 
 (define-public elixir-bandit
   (package
@@ -82,6 +83,40 @@ converting emoticons and emoji names to emoji characters or images,
 including custom emoji.")
     (home-page "https://hexdocs.pm/emote/")
     (license license:wtfpl2)))
+
+(define-public elixir-exkismet
+  (let ((version "0.0.2")
+        (revision "0")
+        (commit "fb1c9dec828bd68bf62bb1e22c85a682349a6b07"))
+  (package
+    (name "elixir-exkismet")
+    (version (git-version version revision commit))
+    (source
+     (origin
+       (method git-fetch)
+       (uri (git-reference
+             (url "https://github.com/cameronp/exkismet.git")
+             (commit commit)))
+       (file-name (git-file-name name version))
+       (sha256
+        (base32 "1dx7h4hq2x94c1g6g4pbwvs9jjvf4ivdc3yycnkm381lsmg5si9y"))
+       (patches
+        ;; Without this PR exkismet is not buildable,
+        ;; see https://github.com/cameronp/exkismet/pull/6
+        (bonfire-search-patches
+         "elixir-exkismet-tcitworld-Update-project.patch"
+         "elixir-exkismet-tcitworld-build-deps-Update-dependencies.patch"))))
+    (build-system mix-build-system)
+    (arguments
+     (list #:tests? #f))
+    (propagated-inputs (list elixir-httpoison elixir-poison))
+    (synopsis
+     "Client for the Akismet.com")
+    (description
+     "This package provides a client (completely unofficial) for the Akismet.com
+comment-spam detection API.")
+    (home-page "https://hexdocs.pm/exkismet/")
+    (license license:expat))))
 
 (define-public elixir-hpack
   (package
