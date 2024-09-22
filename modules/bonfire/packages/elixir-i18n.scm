@@ -30,3 +30,29 @@
 @code{Macro}, @code{Math}, and @code{String} helpers for @code{ex_cldr}.")
     (home-page "https://hexdocs.pm/cldr_utils/")
     (license license:asl2.0)))
+
+(define-public elixir-ex-cldr
+  (package
+    (name "elixir-ex-cldr")
+    (version "2.40.1")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "ex_cldr" version))
+       (sha256
+        (base32 "1wq6hqvgdf1zgcp944makdxqpd1ldgz6yhnra4c9k0cf5rq1162h"))))
+    (build-system mix-build-system)
+    (native-inputs
+     (list elixir-stream-data))
+    (propagated-inputs
+     (list elixir-cldr-utils elixir-decimal elixir-gettext elixir-jason
+           elixir-nimble-parsec))
+    (synopsis
+     "Common Locale Data Repository (CLDR) functions for Elixir")
+    (description
+     "Common Locale Data Repository (CLDR) functions for Elixir to localize and format
+numbers, dates, lists, messages, languages, territories and units with support
+for over 700 locales for internationalized (i18n) and localized (L10N)
+applications.")
+    (home-page "https://hexdocs.pm/ex_cldr/")
+    (license license:asl2.0)))
