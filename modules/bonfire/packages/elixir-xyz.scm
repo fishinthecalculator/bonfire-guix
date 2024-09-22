@@ -304,6 +304,25 @@ options.")
     (home-page "https://hexdocs.pm/owl/")
     (license license:asl2.0)))
 
+(define-public elixir-prove
+  (package
+    (name "elixir-prove")
+    (version "0.1.7")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "prove" version))
+       (sha256
+        (base32 "1hkw70cbq82jjyyqdiaspi5a9v4m7z625h9z9hym0p1ziml25k2r"))))
+    (build-system mix-build-system)
+    (synopsis
+     "Provides the macros @code{prove} and @code{batch}")
+    (description
+     "Prove provides the macros @code{prove} and @code{batch} to write simple
+tests shorter.")
+    (home-page "https://hexdocs.pm/prove/")
+    (license license:expat)))
+
 (define-public elixir-recase
   (package
     (name "elixir-recase")
