@@ -739,3 +739,29 @@ minimal custom JavaScript.")
     (description "Time zone support for Elixir.")
     (home-page "https://hexdocs.pm/tz/")
     (license license:asl2.0)))
+
+(define-public elixir-ex-cldr-dates-times
+  (package
+    (name "elixir-ex-cldr-dates-times")
+    (version "2.20.3")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "ex_cldr_dates_times" version))
+       (sha256
+        (base32 "18g5ns5m30hisr58raaq0xzx3gw9bjvaznw0mza2092dyj9i9zjj"))))
+    (build-system mix-build-system)
+    (propagated-inputs
+     (list elixir-calendar-interval
+           elixir-ex-cldr
+           elixir-ex-cldr-calendars
+           elixir-ex-cldr-units
+           elixir-jason
+           elixir-tz))
+    (synopsis
+     "Date, Time and DateTime localization, internationalization and formatting")
+    (description
+     "Date, Time and @code{DateTime} localization, internationalization and formatting
+functions using the Common Locale Data Repository (CLDR).")
+    (home-page "https://hexdocs.pm/ex_cldr_dates_times/")
+    (license license:asl2.0)))
