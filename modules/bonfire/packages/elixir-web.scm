@@ -316,6 +316,25 @@ having different kinds of processes handle connections.")
     (home-page "https://hexdocs.pm/neuron/")
     (license license:isc)))
 
+(define-public elixir-opentelemetry-semantic-conventions
+  (package
+    (name "elixir-opentelemetry-semantic-conventions")
+    (version "0.2.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "opentelemetry_semantic_conventions" version))
+       (sha256
+        (base32 "15b8gp0897ck75gppns2bb2yy0q5ds0fc9xmfj6nds4ycgss27yn"))))
+    (build-system mix-build-system)
+    (arguments
+     ;;Tests depend on covertool, which is not packaged yet.
+     (list #:tests? #f))
+    (synopsis "OpenTelemetry Semantic Conventions")
+    (description "@code{OpenTelemetry} Semantic Conventions.")
+    (home-page "https://hexdocs.pm/opentelemetry_semantic_conventions/")
+    (license license:asl2.0)))
+
 (define-public elixir-phoenix-ecto
   (package
     (name "elixir-phoenix-ecto")
