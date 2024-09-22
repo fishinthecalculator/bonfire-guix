@@ -536,6 +536,25 @@ events.")
     (home-page "https://hexdocs.pm/thousand_island/")
     (license license:expat)))
 
+(define-public elixir-traverse
+  (package
+    (name "elixir-traverse")
+    (version "1.0.1")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "traverse" version))
+       (sha256
+        (base32 "0w8ww017nlfgqm0n73n0s72nk97xys4ayxh4sz93dbscjydfry8c"))))
+    (build-system mix-build-system)
+    (synopsis
+     "Walk arbitrary Elixir Datastructures in a functional way")
+    (description
+     "Traverse is a toolset to walk arbitrary Elixir Datastructures in a functional
+way.")
+    (home-page "https://hexdocs.pm/traverse/")
+    (license license:asl2.0)))
+
 (define-public elixir-ucwidth
   (package
     (name "elixir-ucwidth")
