@@ -291,6 +291,32 @@ through gettext.")
     (home-page "https://hexdocs.pm/glob_ex/")
     (license license:expat)))
 
+(define-public elixir-igniter
+  (package
+    (name "elixir-igniter")
+    (version "0.3.39")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "igniter" version))
+       (sha256
+        (base32 "1m2b7xwszl3lrxmmby7xz3idcj06h3cmr9i3n9pjli2k7cklly8f"))))
+    (build-system mix-build-system)
+    (arguments
+     ;; Tests depend on elixir-eflame, which is not yet packaged.
+     (list #:tests? #f))
+    (propagated-inputs
+     (list elixir-glob-ex
+           elixir-jason
+           elixir-rewrite
+           elixir-sourceror
+           elixir-spitfire))
+    (synopsis "Code generation and project patching framework")
+    (description
+     "This package provides a code generation and project patching framework.")
+    (home-page "https://hexdocs.pm/igniter/")
+    (license license:expat)))
+
 (define-public elixir-mime
   (package
     (name "elixir-mime")
