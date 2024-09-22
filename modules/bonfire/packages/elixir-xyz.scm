@@ -775,6 +775,25 @@ way.")
     (home-page "https://hexdocs.pm/traverse/")
     (license license:asl2.0)))
 
+(define-public elixir-tzdata
+  (package
+    (name "elixir-tzdata")
+    (version "1.1.2")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "tzdata" version))
+       (sha256
+        (base32 "12xsdkk2zjjwc2mzsk71fl1ypma194s4yhcc6411cdq8ws3b5iyf"))))
+    (build-system mix-build-system)
+    (arguments
+     (list #:tests? #f))
+    (propagated-inputs (list erlang-hackney))
+    (synopsis "Tzdata is a parser and library for the tz database")
+    (description "Tzdata is a parser and library for the tz database.")
+    (home-page "https://hexdocs.pm/tzdata/")
+    (license license:expat)))
+
 (define-public elixir-ucwidth
   (package
     (name "elixir-ucwidth")
