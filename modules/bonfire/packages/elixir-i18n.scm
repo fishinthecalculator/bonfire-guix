@@ -51,6 +51,26 @@ DTIF registry data.")
     (home-page "https://hexdocs.pm/digital_token/")
     (license license:asl2.0)))
 
+(define-public elixir-ex-cldr-currencies
+  (package
+    (name "elixir-ex-cldr-currencies")
+    (version "2.16.3")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "ex_cldr_currencies" version))
+       (sha256
+        (base32 "032p5gx6s9kfq7fhnj7awrzfgzgwv0d41iz5lbkfrw7x9625y6sd"))))
+    (build-system mix-build-system)
+    (propagated-inputs (list elixir-ex-cldr elixir-jason))
+    (synopsis
+     "Currency localization data encapsulation function")
+    (description
+     "Currency localization data encapsulation functions for the Common Locale Data
+Repository (CLDR).")
+    (home-page "https://hexdocs.pm/ex_cldr_currencies/")
+    (license license:asl2.0)))
+
 (define-public elixir-ex-cldr
   (package
     (name "elixir-ex-cldr")
