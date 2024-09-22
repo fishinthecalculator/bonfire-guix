@@ -84,6 +84,26 @@ implementing a handful of (mostly) arrow macros.")
     (home-page "https://hexdocs.pm/beam_file/")
     (license license:expat)))
 
+(define-public elixir-brex-result
+  (package
+    (name "elixir-brex-result")
+    (version "0.4.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "brex_result" version))
+       (sha256
+        (base32 "1y243rg5kc4fhq62hr45agdy2m1afx2zhv65bpspwwj83k3sl8f2"))))
+    (build-system mix-build-system)
+    (native-inputs
+     (list elixir-excoveralls))
+    (synopsis
+     "Tools to handle three common return values")
+    (description
+     "This package provides tools to handle common return values in Elixir.")
+    (home-page "https://hexdocs.pm/brex_result/")
+    (license license:expat)))
+
 (define-public elixir-calendar-interval
   (package
     (name "elixir-calendar-interval")
