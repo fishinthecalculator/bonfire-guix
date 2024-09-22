@@ -303,6 +303,24 @@ options.")
     (home-page "https://hexdocs.pm/nimble_options/")
     (license license:asl2.0)))
 
+(define-public elixir-nimble-ownership
+  (package
+    (name "elixir-nimble-ownership")
+    (version "1.0.0")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "nimble_ownership" version))
+       (sha256
+        (base32 "1k5jdkarlvnqr6g4is5cnyqyhwx2aysmac574114clp9yiscq5kw"))))
+    (build-system mix-build-system)
+    (native-inputs
+     (list elixir-castore elixir-excoveralls))
+    (synopsis "Track ownership of resources across processes")
+    (description "Track ownership of resources across processes.")
+    (home-page "https://hexdocs.pm/nimble_ownership/")
+    (license license:asl2.0)))
+
 (define-public elixir-owl
   (package
     (name "elixir-owl")
