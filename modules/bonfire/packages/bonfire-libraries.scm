@@ -33,7 +33,7 @@
       (arguments
        ;; There are no tests.
        (list #:tests? #f))
-      (native-inputs (list elixir-mess))
+      (native-inputs (list elixir-mess.git))
       (propagated-inputs (list elixir-needle))
       (synopsis
        "Implements @code{Bonfire.Data.AccessControl}")
@@ -63,7 +63,7 @@
       (arguments
        ;; There are no tests.
        (list #:tests? #f))
-      (native-inputs (list elixir-mess))
+      (native-inputs (list elixir-mess.git))
       (propagated-inputs (list bonfire-data-edges.git
                                elixir-ecto-sparkles
                                elixir-needle
@@ -93,7 +93,7 @@
          (sha256
           (base32 "1vz7b8sjx03bcm4afbwarjpfmz8dl4pnqv95qjcwycm9gqvz13yz"))))
       (build-system mix-build-system)
-      (native-inputs (list elixir-mess))
+      (native-inputs (list elixir-mess.git))
       (propagated-inputs (list elixir-needle))
       (synopsis
        "Implements @code{Bonfire.Data.Edges.Edge}")
@@ -129,7 +129,7 @@ associations, and other goodies.")
     (home-page "https://hexdocs.pm/ecto_sparkles/")
     (license license:asl2.0)))
 
-(define-public elixir-mess
+(define-public elixir-mess.git
   (let ((version "0.0.0")
         (revision "0")
         (commit "bfe6e3c56c5237017c7fd0fd8d8d804bec267ca6"))
@@ -154,7 +154,7 @@ and local overrides.")
       (home-page "https://github.com/bonfire-networks/mess")
       (license license:mpl2.0))))
 
-(define-public elixir-pride
+(define-public elixir-pride.git
   (let ((version "0.0.1")
         (revision "0")
         (commit "82798ea71e703e283b2e9a3e8cdbc80035ad1468"))
