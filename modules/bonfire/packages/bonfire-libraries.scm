@@ -155,7 +155,7 @@ and local overrides.")
       (license license:mpl2.0))))
 
 (define-public elixir-pride
-  (let ((version "0.0.0")
+  (let ((version "0.0.1")
         (revision "0")
         (commit "82798ea71e703e283b2e9a3e8cdbc80035ad1468"))
     (package
