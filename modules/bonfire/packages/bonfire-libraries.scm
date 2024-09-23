@@ -2,6 +2,7 @@
 ;;; Copyright © 2024 Giacomo Leidi <goodoldpaul@autistici.org>
 
 (define-module (bonfire packages bonfire-libraries)
+  #:use-module (gnu packages elixir-xyz)
   #:use-module (guix download)
   #:use-module (guix git-download)
   #:use-module (guix gexp)
@@ -102,6 +103,48 @@
 @code{Bonfire.Data.Edges.Edge} and related.")
       (home-page "https://github.com/bonfire-networks/bonfire_data_edges")
       (license license:mpl2.0))))
+
+(define-public bonfire-paginator.git
+  (let ((version "1.0.4")
+        (revision "0")
+        (commit "52f0c069a3d90613b9bfe11ae7dd15eb89b7504e"))
+    (package
+    (name "bonfire-paginator")
+    (version (git-version version revision commit))
+      (source
+       (origin
+         (method git-fetch)
+         (uri (git-reference
+               (url "https://github.com/bonfire-networks/paginator.git")
+               (commit commit)))
+         (file-name (git-file-name name version))
+         (sha256
+          (base32 "0hk1l63bvhf0axzwbaid5bn7jp5aq64qfd0fvl3hvxrsdzdvj5mq"))))
+    (build-system mix-build-system)
+    (arguments
+     (list
+      ;; Tests require a live Postgres process
+      #:tests? #f
+      #:phases
+      #~(modify-phases %standard-phases
+          (add-after 'unpack 'override-mix-env
+            (lambda _
+              (symlink (string-append (getcwd) "/config/dev.exs")
+                       "config/prod.exs"))))))
+    (native-inputs
+     (list elixir-ex-machina elixir-inch-ex))
+    (propagated-inputs
+     (list elixir-ecto
+           elixir-ecto-sql
+           elixir-needle-uid.git
+           elixir-plug-crypto
+           elixir-untangle))
+    (synopsis
+     "Cursor-based pagination for Elixir Ecto")
+    (description
+     "This package implements cursor-based pagination for Elixir Ecto.")
+    (home-page "https://github.com/bonfire-networks/paginator")
+    (license license:expat))))
 
 (define-public elixir-ecto-sparkles
   (package
