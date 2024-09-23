@@ -153,3 +153,33 @@ associations, and other goodies.")
 and local overrides.")
       (home-page "https://github.com/bonfire-networks/mess")
       (license license:mpl2.0))))
+
+(define-public elixir-pride
+  (let ((version "0.0.0")
+        (revision "0")
+        (commit "82798ea71e703e283b2e9a3e8cdbc80035ad1468"))
+    (package
+    (name "elixir-pride")
+    (version (git-version version revision commit))
+      (source
+       (origin
+         (method git-fetch)
+         (uri (git-reference
+               (url "https://github.com/bonfire-networks/pride.git")
+               (commit commit)))
+         (file-name (git-file-name name version))
+         (sha256
+          (base32 "0y0mx7a972z11zxncbxvifp16inss6d5az8ij26qx4ry5xcrijp8"))))
+    (build-system mix-build-system)
+    (propagated-inputs
+     (list elixir-ecto
+           elixir-ecto-sql
+           elixir-untangle
+           elixir-uuidv7))
+    (synopsis
+     "Prefixed UUIDv7 data type for Ecto")
+    (description
+     "This package provides a prefixed UUIDv7 data type for Ecto, and related
+helpers.")
+    (home-page "https://github.com/bonfire-networks/pride")
+    (license license:expat))))
