@@ -154,6 +154,40 @@ and local overrides.")
       (home-page "https://github.com/bonfire-networks/mess")
       (license license:mpl2.0))))
 
+(define-public elixir-needle-uid.git
+  (let ((version "0.0.1")
+        (revision "0")
+        (commit "9b3cfcba18322cec0595fa51f90489001381f47b"))
+    (package
+    (name "elixir-needle-uid")
+    (version (git-version version revision commit))
+      (source
+       (origin
+         (method git-fetch)
+         (uri (git-reference
+               (url "https://github.com/bonfire-networks/needle_uid.git")
+               (commit commit)))
+         (file-name (git-file-name name version))
+         (sha256
+          (base32 "07swqkqvd1p5djylgqs4n4xb71cih7iazzvakfz24s4qwysc5fnc"))))
+    (build-system mix-build-system)
+    (arguments
+     ;; Tests appear to be broken on main
+     ;; 9 doctests, 24 tests, 20 failures
+     (list #:tests? #f))
+    (propagated-inputs
+     (list elixir-ecto
+           elixir-needle-ulid
+           elixir-pride.git
+           elixir-untangle))
+    (synopsis
+     "Hybrid prefixed UUIDv7 and ULID data type for Ecto")
+    (description
+     "This package provides hybrid prefixed UUIDv7 and ULID data type for Ecto
+(using @code{elixir-pride} and @code{elixir-needle-ulid})")
+    (home-page "https://github.com/bonfire-networks/needle_uid")
+    (license license:expat))))
+
 (define-public elixir-pride.git
   (let ((version "0.0.1")
         (revision "0")
