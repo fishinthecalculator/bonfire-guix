@@ -72,8 +72,7 @@ format.  Example: elixir-a-pkg-1.2.3 -> a_pkg or a_pkg-0.0.0-0.e51e36e -> a_pkg"
    (strip-prefix name+ver)))
 
 (define* (set-erl-env #:key inputs #:allow-other-keys)
-  "Set environment variables.
-See: https://hexdocs.pm/mix/1.15.7/Mix.html#module-environment-variables"
+  "Show Erlang dependencies in Elixir's load path."
   (setenv "ERL_LIBS"
           (string-join
            (search-path-as-list `("lib/erlang/lib"
