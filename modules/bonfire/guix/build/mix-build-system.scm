@@ -75,10 +75,7 @@ format.  Example: elixir-a-pkg-1.2.3 -> a_pkg or a_pkg-0.0.0-0.e51e36e -> a_pkg"
   "Show Erlang dependencies in Elixir's load path."
   (setenv "ERL_LIBS"
           (string-join
-           (search-path-as-list `("lib/erlang/lib"
-                                  ,(string-drop
-                                    (elixir-libdir "" (elixir-version inputs))
-                                    1))
+           (search-path-as-list `("lib/erlang/lib")
                                 (map (match-lambda
                                        ((label . package) package))
                                      inputs))
