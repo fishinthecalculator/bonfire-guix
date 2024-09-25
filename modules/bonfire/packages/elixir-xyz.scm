@@ -736,6 +736,41 @@ events.")
     (home-page "https://hexdocs.pm/telemetry_metrics/")
     (license license:asl2.0)))
 
+(define-public elixir-timex
+  (package
+    (name "elixir-timex")
+    (version "3.7.11")
+    (source
+     (origin
+       (method url-fetch)
+       (uri (hexpm-uri "timex" version))
+       (sha256
+        (base32 "1anijimbrb3ngdy6fdspr8c9hz6dip7nakx0gayzkfmsxzvj944b"))))
+    (build-system mix-build-system)
+    (arguments
+     (list
+      ;; Tests appear to require network.
+      #:tests? #f
+      #:phases
+      #~(modify-phases %standard-phases
+          (add-after 'unpack 'set-locales
+            (lambda _
+              (mkdir-p "config")
+              (call-with-output-file "config/config.exs"
+                (lambda (port)
+                  (display "import Config
+
+config :gettext, :default_locale, \"en\"\n" port))))))))
+    (propagated-inputs (list elixir-combine elixir-gettext elixir-tzdata))
+    (synopsis
+     "Comprehensive Date/Time library for Elixir projects")
+    (description
+     "Timex is a rich, comprehensive Date/Time library for Elixir projects, with
+full timezone support via the @code{:tzdata} package.  If you need to manipulate
+dates, times, datetimes, timestamps, etc., then Timex is for you.")
+    (home-page "https://hexdocs.pm/timex/")
+    (license license:expat)))
+
 (define-public elixir-thousand-island
   (package
     (name "elixir-thousand-island")
