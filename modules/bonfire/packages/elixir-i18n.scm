@@ -4,12 +4,12 @@
 (define-module (bonfire packages elixir-i18n)
   #:use-module (gnu packages elixir-xyz)
   #:use-module (gnu packages erlang)
+  #:use-module (guix build-system mix)
   #:use-module (guix download)
   #:use-module (guix gexp)
   #:use-module ((guix licenses)
                 #:prefix license:)
   #:use-module (guix packages)
-  #:use-module (bonfire guix build-system mix)
   #:use-module (bonfire packages elixir-xyz)
   #:use-module (bonfire packages elixir-markup))
 
