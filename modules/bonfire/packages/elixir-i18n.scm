@@ -6,6 +6,7 @@
   #:use-module (gnu packages erlang)
   #:use-module (guix build-system mix)
   #:use-module (guix download)
+  #:use-module (guix git-download)
   #:use-module (guix gexp)
   #:use-module ((guix licenses)
                 #:prefix license:)
@@ -245,9 +246,9 @@ based upon the Common Locale Data Repository (CLDR).")
     (home-page "https://hexdocs.pm/ex_cldr_units/")
     (license license:asl2.0)))
 
-(define-public elixir-ex-cldr
+(define-public elixir-ex-cldr-minimal
   (package
-    (name "elixir-ex-cldr")
+    (name "elixir-ex-cldr-minimal")
     (version "2.40.1")
     (source
      (origin
@@ -270,3 +271,28 @@ for over 700 locales for internationalized (i18n) and localized (L10N)
 applications.")
     (home-page "https://hexdocs.pm/ex_cldr/")
     (license license:asl2.0)))
+
+(define-public elixir-ex-cldr
+  (package
+    (inherit elixir-ex-cldr-minimal)
+    (name "elixir-ex-cldr")
+    (version "2.40.1")
+    (source
+     (origin
+       ;; The hex.pm package ships only the en locale.
+       (method git-fetch)
+       (uri (git-reference
+             (url "https://github.com/elixir-cldr/cldr.git")
+             (commit (string-append "v" version))))
+       (file-name (git-file-name name version))
+       (sha256
+        (base32 "1ags1jwc3r7xaj77sp83sv4bnqvyhxb6jzn3rfw74j8iacq43b5l"))))
+    (arguments
+     (list
+      #:phases
+      #~(modify-phases %standard-phases
+          (add-after 'unpack 'disable-failing-tests
+            ;; test That locales with no version are replaced with current version
+            ;; test That locales with an old version are replaced with current version
+            (lambda _
+              (for-each delete-file '("test/locale_upgrade_test.exs")))))))))
