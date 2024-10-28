@@ -196,6 +196,24 @@ ULID datatype for @code{Ecto} (using @code{ex_ulid}) and related helpers.")
     (home-page "https://hexdocs.pm/needle_ulid/")
     (license license:expat)))
 
+(define-public elixir-needle-ulid.git
+  (let ((version (package-version elixir-needle-ulid))
+        (revision "0")
+        (commit "10f9ad7c9916f9ff3d5e4f34a1a270c45056fe8d"))
+    (package
+      (inherit elixir-needle-ulid)
+      (name "elixir-needle-ulid.git")
+      (version (git-version version revision commit))
+      (source
+       (origin
+         (method git-fetch)
+         (uri (git-reference
+               (url "https://github.com/bonfire-networks/needle_ulid.git")
+               (commit commit)))
+         (file-name (git-file-name name version))
+         (sha256
+          (base32 "1iknjj3jhj5z2wyjym8bvz6syrwjx6wvmbc246a9rm25yd0szn44")))))))
+
 (define-public elixir-needle
   (package
     (name "elixir-needle")
