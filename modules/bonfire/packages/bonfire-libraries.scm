@@ -46,8 +46,8 @@
 
 (define-public bonfire-data-identity.git
   (let ((version "0.4.0")
-        (revision "0")
-        (commit "89fdedc78b9fdbebbebef7aff04155d34fb29877"))
+        (revision "1")
+        (commit "f85a23060dd0cc7452b4cb9e96e655db12f3d488"))
     (package
       (name "bonfire-data-identity")
       (version (git-version version revision commit))
@@ -59,7 +59,7 @@
                (commit commit)))
          (file-name (git-file-name name version))
          (sha256
-          (base32 "1p4q2k4wz3c261p3xyp21vhg32n9c5zjlmwchqyifdmymfhvq3m1"))))
+          (base32 "0a9gmm0cgagwqxd2p3lm1zmx290hryvwzz4vyqhls7ysj9apivi0"))))
       (build-system mix-build-system)
       (arguments
        ;; There are no tests.
