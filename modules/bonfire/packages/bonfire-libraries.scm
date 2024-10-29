@@ -220,7 +220,7 @@ and local overrides.")
      (list #:tests? #f))
     (propagated-inputs
      (list elixir-ecto
-           elixir-needle-ulid
+           elixir-needle-ulid.git
            elixir-pride.git
            elixir-untangle))
     (synopsis
