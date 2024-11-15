@@ -17,8 +17,8 @@
 
 (define-public bonfire-common.git
   (let ((version "0.4.0")
-        (revision "0")
-        (commit "7d825e4c4ae610b2376b9150d31b310d726b970e"))
+        (revision "1")
+        (commit "ea9160f5b0ce5ac535b2bad32305257a1de8da6f"))
     (package
       (name "bonfire-common")
       (version (git-version version revision commit))
@@ -30,7 +30,7 @@
                (commit commit)))
          (file-name (git-file-name name version))
          (sha256
-          (base32 "0d622m9mr29lg5a77cq41na653sbn8chr8my6gq9fjqhsdvhraa5"))))
+          (base32 "1bnvvi3kxazkajrbkklgghjiww26shddg5ccxsp628620cx0racm"))))
       (build-system mix-build-system)
     (arguments
      (list
