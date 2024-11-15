@@ -86,4 +86,50 @@ An extension for Bonfire that contains:
 @item Date and time helpers in @code{Bonfire.Common.DatesTimes}
 @end itemize")
       (home-page "https://github.com/bonfire-networks/bonfire_common")
-      (license license:mpl2.0))))
+      (license license:agpl3+))))
+
+(define-public bonfire-fail.git
+  (let ((version "0.1.0")
+        (revision "0")
+        (commit "aa5dfa98b25452f1148b8eb2134b6cc290d8eefb"))
+    (package
+      (name "bonfire-fail")
+      (version (git-version version revision commit))
+      (source
+       (origin
+         (method git-fetch)
+         (uri (git-reference
+               (url "https://github.com/bonfire-networks/bonfire_fail.git")
+               (commit commit)))
+         (file-name (git-file-name name version))
+         (sha256
+          (base32 "1sgvnx2bninhic25xv6w0mnnlim9wya87ss31hxfcphr3cw3hr3k"))))
+      (build-system mix-build-system)
+    (arguments
+     (list
+      ;; There are no tests
+      #:tests? #f))
+      (native-inputs (list bonfire-paginator.git elixir-phoenix-live-reload))
+      (propagated-inputs
+       (list bonfire-common.git))
+      (synopsis
+       "Mapping of error atoms to HTTP codes and friendly messages")
+      (description
+       "An library for Bonfire that contains:
+
+@itemize
+@item Handling, standardizing, and formatting errors and error messages
+@item Mapping of error atoms, exceptions, and Changesets to HTTP codes and
+friendly messages (see
+@uref{https://hexdocs.pm/plug/Plug.Conn.Status.html#code/1-known-status-codes,
+@code{Plug.Conn.Status}} and @code{Bonfire.Fail.RuntimeConfig} for built-in
+lists of errors, which you can extend)
+@item @code{Bonfire.Fail} error struct (e.g. @code{%Bonfire.Fail@{code:
+:gateway_timeout, message: \"Gateway Timeout\", status: 504@}})
+@item @code{Bonfire.Fail} and @code{Bonfire.Fail.Auth} exceptions (e.g.
+@code{raise Bonfire.Fail, :unauthorized} or @code{raise Bonfire.Fail.Auth,
+:needs_login})
+
+@end itemize")
+      (home-page "https://github.com/bonfire-networks/bonfire_fail")
+      (license license:agpl3+))))
